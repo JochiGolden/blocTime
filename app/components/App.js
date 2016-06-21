@@ -13,11 +13,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setTimer : function(startTime) {
-      dispatch(actions.setTimer(startTime));
+    setInitialTime : function(startTime) {
+      dispatch(actions.setInitialTime(startTime));
     },
     countDown : function(currentTime) {
       dispatch(actions.countDown(currentTime));
+    },
+    countFinished : function() {
+      dispatch(actions.countFinished());
     }
   };
 }
