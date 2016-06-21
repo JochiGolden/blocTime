@@ -6,14 +6,16 @@ import rootReducer from './reducers/index';
 
 const defaultState = {
   setTime : {
-    "startTime" : {
-      "pomodoro" : 25,
-      "shortBreak" : 5,
-      "longBreak" : 30
+    "timerOptions" : {
+      "pomodoro" : "pomodoro",
+      "shortBreak" : "shortBreak",
+      "longBreak" : "longBreak",
     },
-    "duration" : null,
-    "totalTime" : null,
-    "currentTime" : 0
+    "currentOption" : "pomodoro",
+    "currentTime" : 5,
+    "countingDown" : false,
+    "onBreak" : false,
+    "pomodorosCompleted" : 0
   }
 };
 

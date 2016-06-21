@@ -1,16 +1,15 @@
 import React from "react";
-var PropTypes = React.PropTypes;
 
 class Timer extends React.Component {
   
   constructor(props) {
     super(props);
   }
-    
+  
   render() {
     return (
-      <div class="container">
-        <p>{this.props.currentTime}</p>
+      <div className="col-md-3" id="timer">
+        <span>{this.props.currentTime}</span>
       </div>
     );
   }

@@ -18,6 +18,8 @@ const SetInterval = (Component, state, intervalFn) => class extends React.Compon
   componentDidMount() {
     if (this.state.currentTime > 0) {
       this.setInterval(this.update.bind(this), 1000);
+    } else {
+      this.props.countFinished();
     }
   }
 

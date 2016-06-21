@@ -3,19 +3,46 @@ function setTime(state = [], action) {
   let newState = {};
   
   switch (action.type) {
-    case 'SET_TIMER' :
+    case 'SET_INITIAL_TIME' :
       
-      for (var duration in state.startTime) {
-        if (duration === action.duration) {
-          newState.totalTime = state.startTime[action.duration];
-          newState.currentTime = state.startTime[action.duration];
-          return {...state, ...newState};
-        }
+      newState.currentOption = action.duration;
+      newState.countingDown = true;
+      
+      switch (action.duration) {
+        case 'pomodoro' :
+          newState.currentTime = 5;
+          break;
+        case 'shortBreak' :
+          newState.currentTime = 5;
+          break;
+        case 'longBreak' :
+          newState.currentTime = 5;
+          break;
       }
+      return {...state, ...newState};
     case 'COUNT_DOWN' :
       
       newState.currentTime = state.currentTime - 1;
 
+      return {...state, ...newState};
+      
+    case 'COUNT_FINISHED' :
+      newState.countingDown = false;
+      
+      if (state.currentOption === 'pomodoro') {
+        newState.pomodorosCompleted = state.pomodorosCompleted + 1;
+      }
+      
+      if (state.pomodorosCompleted % 3 === 0 && !state.onBreak && state.pomodorosCompleted !== 0) {
+        newState.currentOption = state.timerOptions.longBreak;
+        newState.onBreak = true;
+      } else if (!state.onBreak) {
+        newState.currentOption = state.timerOptions.shortBreak;
+        newState.onBreak = true;
+      } else {
+        newState.currentOption = state.timerOptions.pomodoro;
+        newState.onBreak = false;
+      }
       return {...state, ...newState};
     default:
       return state;

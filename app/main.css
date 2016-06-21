@@ -1,9 +1,75 @@
-.main-container {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+.jumbotron {
   background-color: aqua;
+  color: teal;
+  font: 1em Avenir;
+  letter-spacing: 1.5px;
 }
 
-.btn {
+/*****************************************/
+/* Timer                                 */
+/*****************************************/
+
+#timerContainer {
+  max-width: 280px;
+  margin: auto;
+  
+  padding: 5px;
+  border: 5px solid teal;
+  border-radius: 20px;
+}
+
+#timer {
+  background-color: yellow;
+  border-radius: 10px 0 0 10px;
+  border-right: 3px solid aqua;
+}
+
+#timer span {
+  font: 3em Impact;
+  vertical-align: middle;
+}
+
+#markContainerText {
   background-color: deeppink;
+  color: yellow;
+  border-bottom: 3px solid aqua;
+  border-radius: 0 10px 0 0;
+}
+
+#marks {
+  min-height: 27.5px;
+  color: yellow;
+  background-color: deeppink;
+  border-radius: 0 0 10px 0;
+}
+
+.completion-mark {
+  vertical-align: middle;
+}
+
+#markContainer {
+  position: relative;
+  padding: 0 15px;
+}
+
+/*****************************************/
+/* Button                                */
+/*****************************************/
+
+.btn {
+  margin-top: 15px;
+  color: yellow;
+  background-color: deeppink;
+}
+
+.btn:hover {
+  color: yellow;
+}
+
+.btn:focus {
+  color: yellow;
+}
+
+.btn.focus {
+  color: yellow;
 }
