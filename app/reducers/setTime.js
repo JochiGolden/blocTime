@@ -33,7 +33,7 @@ function setTime(state = [], action) {
         newState.pomodorosCompleted = state.pomodorosCompleted + 1;
       }
       
-      if (state.pomodorosCompleted % 3 === 0 && !state.onBreak && state.pomodorosCompleted !== 0) {
+      if (state.pomodorosCompleted % 4 === 3 && !state.onBreak) {
         newState.currentOption = state.timerOptions.longBreak;
         newState.onBreak = true;
       } else if (!state.onBreak) {
