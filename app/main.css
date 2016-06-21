@@ -1,3 +1,7 @@
+body {
+  background-color: teal;
+}
+
 .jumbotron {
   background-color: aqua;
   color: teal;
@@ -10,18 +14,20 @@
 /*****************************************/
 
 #timerContainer {
-  max-width: 280px;
+  max-width: 300px;
   margin: auto;
   
   padding: 5px;
+  background-color: orange;
   border: 5px solid teal;
   border-radius: 20px;
+  box-shadow: 0 0 5px #333 inset;
 }
 
 #timer {
   background-color: yellow;
   border-radius: 10px 0 0 10px;
-  border-right: 3px solid aqua;
+  box-shadow: 0 0 10px #333 inset;
 }
 
 #timer span {
@@ -32,19 +38,21 @@
 #markContainerText {
   background-color: deeppink;
   color: yellow;
-  border-bottom: 3px solid aqua;
+  margin-bottom: 5px;
   border-radius: 0 10px 0 0;
+  box-shadow: 0 0 10px #333 inset;
 }
 
 #marks {
-  min-height: 27.5px;
+  min-height: 27px;
   color: yellow;
   background-color: deeppink;
   border-radius: 0 0 10px 0;
+  box-shadow: 0 0 10px #333 inset;
 }
 
 .completion-mark {
-  vertical-align: middle;
+  vertical-align: -4px;
 }
 
 #markContainer {
@@ -57,9 +65,12 @@
 /*****************************************/
 
 .btn {
+  width: 150px;
   margin-top: 15px;
   color: yellow;
   background-color: deeppink;
+  border: 7px solid teal;
+  box-shadow: 0 0 10px #333 inset;
 }
 
 .btn:hover {
@@ -67,6 +78,7 @@
 }
 
 .btn:focus {
+  outline: none;
   color: yellow;
 }
 
