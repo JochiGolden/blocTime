@@ -11,7 +11,7 @@ class MarkContainer extends React.Component {
   
   render() {
     return (
-      <div className="col-md-8 col-md-offset-1" id="markContainer">
+      <div id="markContainer">
         <div className="row" id="markContainerText">
           Completed Pomodoros
         </div>

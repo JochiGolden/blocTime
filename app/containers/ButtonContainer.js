@@ -2,7 +2,6 @@ import React from "react";
 
 // Requires:
 //    setTime.currentOption,
-//    beginCountDown(fn),
 //    setInitialTime(fn)
 
 class ButtonContainer extends React.Component {
@@ -13,31 +12,20 @@ class ButtonContainer extends React.Component {
     
   render() {
     
-    let button = {
-      template: (label, func) => {
-        return (
-          <div className="container">
-            <button type="button"
-                    className="btn btn-lg"
-                    onClick={func}>
-              {label}
-            </button>
-          </div>
-        );
-      }
+    const options = {};
+    switch (this.props.currentOption) {
+        case 'pomodoro': options.startTime = [0, 5, 10, 10]; options.label = "Pomodoro"; break;
+        case 'shortBreak': options.startTime = [0, 5, 10, 10]; options.label = "Short Break"; break;
+        case 'longBreak': options.startTime = [3, 10, 10, 10]; options.label = "Long Break"; break;
     }
     
-    switch (this.props.currentOption) {
-      case 'pomodoro':
-        return button.template(
-          'Pomodoro', this.props.setInitialTime.bind(null, this.props.currentOption));
-      case 'shortBreak' :
-        return button.template(
-          'Short Break', this.props.setInitialTime.bind(null, this.props.currentOption));
-      case 'longBreak' :
-        return button.template(
-          'Long Break', this.props.setInitialTime.bind(null, this.props.currentOption));
-    }
+    return (
+      <button type="button"
+              className="btn btn-lg"
+              onClick={this.props.setInitialTime.bind(null, options.startTime)}>
+        {options.label}
+      </button>
+    );
   }
 }
 
