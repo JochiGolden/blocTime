@@ -14,7 +14,7 @@ body {
 /*****************************************/
 
 #timerContainer {
-  max-width: 300px;
+  max-width: 380px;
   margin: auto;
   
   padding: 5px;
@@ -25,17 +25,50 @@ body {
 }
 
 #timer {
+  float: left;
+  padding: 0 15px;
   background-color: yellow;
   border-radius: 10px 0 0 10px;
   box-shadow: 0 0 10px #333 inset;
 }
 
-#timer span {
+.digit {
+  float: left;
+  min-width: 24px;
   font: 3em Impact;
   vertical-align: middle;
 }
 
+.digit-enter {
+  opacity: 0.01;
+  transition: opacity 1s ease-in;
+}
+
+.digit-enter.digit-enter-active {
+  opacity: 1;
+}
+
+.digit-leave {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.digit-leave.digit-leave-active {
+  opacity: 0.01;
+}
+
+/*****************************************/
+/* Marks                                 */
+/*****************************************/
+
+#markContainer {
+  float: right;
+  position: relative;
+  padding: 0 15px;
+}
+
 #markContainerText {
+  padding: 0 15px;
   background-color: deeppink;
   color: yellow;
   margin-bottom: 5px;
@@ -53,11 +86,6 @@ body {
 
 .completion-mark {
   vertical-align: -4px;
-}
-
-#markContainer {
-  position: relative;
-  padding: 0 15px;
 }
 
 /*****************************************/

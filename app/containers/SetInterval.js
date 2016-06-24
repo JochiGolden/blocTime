@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SetInterval = (Component, state, intervalFn) => class extends React.Component {
+const SetInterval = (Component, state, intervalFn) => class SetInterval extends React.Component {
   
   constructor(props) {
     super(props);
@@ -16,7 +16,8 @@ const SetInterval = (Component, state, intervalFn) => class extends React.Compon
   }
 
   componentDidMount() {
-    if (this.state.currentTime > 0) {
+    
+    if (this.state.totalTime > 0) {
       this.setInterval(this.update.bind(this), 1000);
     } else {
       this.props.countFinished();
@@ -32,7 +33,6 @@ const SetInterval = (Component, state, intervalFn) => class extends React.Compon
   }
 
   render() {
-    
     return <Component {...this.props} {...this.state} />
   }
 }

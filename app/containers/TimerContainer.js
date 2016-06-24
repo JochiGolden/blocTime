@@ -1,10 +1,8 @@
 import React from 'react';
-import SetInterval from './SetInterval';
-import Timer from '../components/Timer';
+import StaticTimer from '../components/StaticTimer';
+import ActiveTimer from '../components/ActiveTimer';
 
 // Requires:
-//    setTime.currentTime
-//    setTime.countingDown
 //    countDown(fn)
 //    countFinished(fn)
 
@@ -16,19 +14,20 @@ class TimerContainer extends React.Component {
   
   render() {
     
-    let IntervalTimer = SetInterval(
-      Timer,
-      { currentTime: this.props.currentTime },
-      this.props.countDown
-    );
+    const { countDown, setInitialTime, countFinished, countingDown, currentTime } = this.props;
     
     if (this.props.countingDown) {
       return (
-        <IntervalTimer countFinished={this.props.countFinished} />
+        <ActiveTimer
+          currentTime={ currentTime }
+          countDown={ countDown }
+          setInitialTime={ setInitialTime }
+          countFinished={ countFinished } />
       );
     } else {
       return (
-        <Timer currentTime={ this.props.currentTime } />
+        <StaticTimer
+          currentTime={ currentTime } />
       );
     }
   }

@@ -11,9 +11,9 @@ const defaultState = {
       "shortBreak" : "shortBreak",
       "longBreak" : "longBreak",
     },
-    "currentOption" : "pomodoro",
-    "currentTime" : 5,
+    "currentTime" : [2, 5, 10, 10],
     "countingDown" : false,
+    "currentOption" : "pomodoro",
     "onBreak" : false,
     "pomodorosCompleted" : 0
   }

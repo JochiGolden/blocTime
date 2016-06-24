@@ -1,49 +1,53 @@
 function setTime(state = [], action) {
   
   let newState = {};
+  newState.currentTime = state.currentTime;
   
   switch (action.type) {
     case 'SET_INITIAL_TIME' :
       
-      newState.currentOption = action.duration;
+      // action.startTime
+      
       newState.countingDown = true;
       
-      switch (action.duration) {
-        case 'pomodoro' :
-          newState.currentTime = 5;
-          break;
-        case 'shortBreak' :
-          newState.currentTime = 5;
-          break;
-        case 'longBreak' :
-          newState.currentTime = 5;
-          break;
-      }
+      newState.currentTime = action.startTime;
+      
       return {...state, ...newState};
     case 'COUNT_DOWN' :
       
-      newState.currentTime = state.currentTime - 1;
-
+      // action.index, action.totalTime
+      
+      let totalTime = action.totalTime.totalTime - 1,
+          minutes = Math.floor(totalTime / 60),
+          seconds = totalTime % 60,
+          minutesTens = Math.floor(minutes / 10),
+          minutesOnes = minutes % 10,
+          secondsTens = Math.floor(seconds / 10),
+          secondsOnes = seconds % 10;
+      
+      newState.currentTime = [minutesTens, minutesOnes, secondsTens, secondsOnes];
+      
       return {...state, ...newState};
       
     case 'COUNT_FINISHED' :
+      
       newState.countingDown = false;
       
       if (state.currentOption === 'pomodoro') {
         newState.pomodorosCompleted = state.pomodorosCompleted + 1;
+        newState.onBreak = true;
       }
       
-      if (state.pomodorosCompleted % 4 === 3 && !state.onBreak) {
+      if (state.pomodorosCompleted % 4 === 3 && newState.onBreak) {
         newState.currentOption = state.timerOptions.longBreak;
-        newState.onBreak = true;
-      } else if (!state.onBreak) {
+      } else if (newState.onBreak) {
         newState.currentOption = state.timerOptions.shortBreak;
-        newState.onBreak = true;
       } else {
         newState.currentOption = state.timerOptions.pomodoro;
-        newState.onBreak = false;
       }
+      
       return {...state, ...newState};
+      
     default:
       return state;
   }

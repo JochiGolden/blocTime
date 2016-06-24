@@ -16,8 +16,8 @@ function mapDispatchToProps(dispatch) {
     setInitialTime : function(startTime) {
       dispatch(actions.setInitialTime(startTime));
     },
-    countDown : function(currentTime) {
-      dispatch(actions.countDown(currentTime));
+    countDown : function(totalTime) {
+      dispatch(actions.countDown(totalTime));
     },
     countFinished : function() {
       dispatch(actions.countFinished());
