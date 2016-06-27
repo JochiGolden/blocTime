@@ -55,6 +55,14 @@ function setTime(state = [], action) {
       
       return {...state, ...newState};
       
+    case 'PLAY_A_DING' :
+      
+      const audioNode = document.getElementById('ding');
+      console.log(audioNode);
+      audioNode.play();
+      
+      return state;
+      
     default:
       return state;
   }

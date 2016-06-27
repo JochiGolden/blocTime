@@ -24,3 +24,9 @@ export function countFinished() {
     type: 'COUNT_FINISHED'
   }
 }
+
+export function playADing() {
+  return {
+    type: 'PLAY_A_DING'
+  }
+}

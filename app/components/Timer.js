@@ -3,9 +3,9 @@ import SetInterval from '../containers/SetInterval';
 import Digit from './Digit';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-const Timer = ({ currentTime, countingDown, countFinished, replaceDigit }) => {
+const Timer = ({ currentTime, countingDown, countFinished, replaceDigit, playADing }) => {
   
-  let Counter = SetInterval({ replaceDigit, currentTime, countFinished });
+  let Counter = SetInterval({ replaceDigit, currentTime, countFinished, playADing });
   
   let Display = countingDown ?
       <Counter />

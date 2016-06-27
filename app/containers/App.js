@@ -21,6 +21,9 @@ function mapDispatchToProps(dispatch) {
     },
     countFinished : function() {
       dispatch(actions.countFinished());
+    },
+    playADing : function() {
+      dispatch(actions.playADing());
     }
   };
 }

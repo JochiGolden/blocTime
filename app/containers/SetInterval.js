@@ -1,7 +1,7 @@
 import React from 'react';
 import Digit from '../components/Digit';
 
-const SetInterval = ({ countFinished, currentTime, replaceDigit }) => class extends React.Component {
+const SetInterval = ({ countFinished, currentTime, replaceDigit, currentOption, playADing }) => class extends React.Component {
   
   constructor(props) {
     super(props);
@@ -26,6 +26,7 @@ const SetInterval = ({ countFinished, currentTime, replaceDigit }) => class exte
     if (totalTime > 0) {
       this.setInterval(this.update.bind(this), 1000);
     } else {
+      playADing();
       countFinished();
     }
   }
