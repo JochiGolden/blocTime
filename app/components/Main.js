@@ -1,5 +1,5 @@
 import React from "react";
-import TimerContainer from '../containers/TimerContainer';
+import Timer from './Timer';
 import ButtonContainer from '../containers/ButtonContainer';
 import MarkContainer from '../containers/MarkContainer';
 
@@ -7,28 +7,28 @@ class Main extends React.Component {
   
   render() {
     
-    const { setTime, setInitialTime, countDown, countFinished } = this.props;
+    const { setTime, setInitialTime, startCount, replaceDigit, countFinished } = this.props;
 
     return (
       <div className="jumbotron text-center">
         
         <div className="row">
           <div className="container" id="timerContainer">
-            <TimerContainer
-              currentTime={ setTime.currentTime }
+            <Timer 
               countingDown={ setTime.countingDown }
-              countDown={ countDown }
+              currentTime={ setTime.currentTime }
+              replaceDigit={ replaceDigit }
               countFinished={ countFinished }
-              setInitialTime={ setInitialTime } />
-
-            <MarkContainer pomodorosCompleted={ setTime.pomodorosCompleted } />
+              />
+            <MarkContainer
+                pomodorosCompleted={ setTime.pomodorosCompleted } />
           </div>
-
-          <div className="row">
-            <ButtonContainer
+          <ButtonContainer
               currentOption={ setTime.currentOption }
-              setInitialTime={ setInitialTime } />
-          </div>
+              timerOptions={ setTime.timerOptions }
+              countingDown={ setTime.countingDown }
+              setInitialTime={ setInitialTime }
+              startCount={ startCount } />
         </div>
       </div>
     );

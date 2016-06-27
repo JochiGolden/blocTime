@@ -6,45 +6,73 @@ function setTime(state = [], action) {
   switch (action.type) {
     case 'SET_INITIAL_TIME' :
       
-      // action.startTime
-      
-      newState.countingDown = true;
-      
-      newState.currentTime = action.startTime;
+      console.log('Reducer Set Initial Time');
+
+      newState.currentTime = state.timerOptions[state.currentOption].startTime;
+      newState.countingDown = [false, false, false, false];
       
       return {...state, ...newState};
-    case 'COUNT_DOWN' :
       
-      // action.index, action.totalTime
+    case 'START_COUNT' :
       
-      let totalTime = action.totalTime.totalTime - 1,
-          minutes = Math.floor(totalTime / 60),
-          seconds = totalTime % 60,
-          minutesTens = Math.floor(minutes / 10),
-          minutesOnes = minutes % 10,
-          secondsTens = Math.floor(seconds / 10),
-          secondsOnes = seconds % 10;
+      console.log('Reducer Start Count');
+      newState.countingDown = [true, true, true, true];
+      newState.currentTime = state.timerOptions[state.currentOption].startTime;
+      newState.currentTime = [
+        newState.currentTime[0] < 1 ? newState.currentTime[0] : newState.currentTime[0] - 1,
+        newState.currentTime[1] - 1,
+        newState.currentTime[2] - 5,
+        newState.currentTime[3] - 1];
+
+      return {...state, ...newState};
       
-      newState.currentTime = [minutesTens, minutesOnes, secondsTens, secondsOnes];
+    case 'REPLACE_DIGIT' :
+      
+      console.log('Reducer Replace Digit');
+      newState.currentTime[action.index] -= 1;
+      
+      return {...state, ...newState};
+    
+    case 'ZEROED' :
+      
+      newState.countingDown = state.countingDown;
+      let index = action.index ? action.index : 0;
+      
+      if (newState.currentTime[index - 1] === 0 || undefined) {
+        newState.countingDown[index] = false;
+      } else if (index % 2 === 0) {
+        newState.currentTime[index] = 5;
+      } else {
+        newState.currentTime[index] = 10;
+      }
+      console.log(`Reducer Zero says newState.countingDown equals ${newState.countingDown}`);
       
       return {...state, ...newState};
       
     case 'COUNT_FINISHED' :
       
-      newState.countingDown = false;
+      console.log(`Reducer Count Finished at index ${index}`);
       
-      if (state.currentOption === 'pomodoro') {
-        newState.pomodorosCompleted = state.pomodorosCompleted + 1;
-        newState.onBreak = true;
+      let stillCounting = newState.countingDown.reduce((prevDigit, currDigit) => {
+        return prevDigit || currDigit ? true : false;
+      });
+      
+      if (!stillCounting) {
+        if (state.currentOption === 'pomodoro') {
+          newState.pomodorosCompleted = state.pomodorosCompleted + 1;
+          newState.onBreak = true;
+        }
+
+        if (state.pomodorosCompleted % 4 === 3 && newState.onBreak) {
+          newState.currentOption = state.timerOptions.longBreak;
+        } else if (newState.onBreak) {
+          newState.currentOption = state.timerOptions.shortBreak;
+        } else {
+          newState.currentOption = state.timerOptions.pomodoro;
+        }
       }
       
-      if (state.pomodorosCompleted % 4 === 3 && newState.onBreak) {
-        newState.currentOption = state.timerOptions.longBreak;
-      } else if (newState.onBreak) {
-        newState.currentOption = state.timerOptions.shortBreak;
-      } else {
-        newState.currentOption = state.timerOptions.pomodoro;
-      }
+      console.log(`the newState.currentOption is ${newState.currentOption.label}`);
       
       return {...state, ...newState};
       

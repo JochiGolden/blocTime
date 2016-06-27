@@ -1,30 +1,42 @@
 import React from "react";
-
-// Requires:
-//    setTime.currentOption,
-//    setInitialTime(fn)
+import { connect } from "react-redux";
+import SelectBtn from '../components/buttons/SelectBtn';
 
 class ButtonContainer extends React.Component {
   
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    
   }
-    
+  
   render() {
+
+    let SelectButton;
+    const { startCount, setInitialTime, timerOptions, currentOption } = this.props;
     
-    const options = {};
-    switch (this.props.currentOption) {
-        case 'pomodoro': options.startTime = [0, 5, 10, 10]; options.label = "Pomodoro"; break;
-        case 'shortBreak': options.startTime = [0, 5, 10, 10]; options.label = "Short Break"; break;
-        case 'longBreak': options.startTime = [3, 10, 10, 10]; options.label = "Long Break"; break;
+    let isCounting = this.props.countingDown.reduce((prev, check) => {
+      return prev && check
+    }, true);
+    let printCounting = isCounting ? "is counting down" : "is not counting down";
+    let printLabel = isCounting ? "Reset" : timerOptions[currentOption].label
+    
+    console.log(`The timer ${printCounting}. Display the ${printLabel} button`)
+    
+    if (isCounting) {
+      SelectButton = <SelectBtn
+        label={ "Reset" }
+        startCount={ startCount }
+        setInitialTime= { setInitialTime } />
+    } else {
+      SelectButton = <SelectBtn
+        label={ timerOptions[currentOption].label }
+        startCount={ startCount }
+        setInitialTime= { setInitialTime } />
     }
     
     return (
-      <button type="button"
-              className="btn btn-lg"
-              onClick={this.props.setInitialTime.bind(null, options.startTime)}>
-        {options.label}
-      </button>
+      <div className="row">
+        { SelectButton }
+      </div>
     );
   }
 }
