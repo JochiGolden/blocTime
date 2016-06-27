@@ -1,38 +1,34 @@
 import React from "react";
-import TimerContainer from '../containers/TimerContainer';
-import ButtonContainer from '../containers/ButtonContainer';
+import Timer from './Timer';
+import SelectBtn from './buttons/SelectBtn';
 import MarkContainer from '../containers/MarkContainer';
 
-class Main extends React.Component {
+const Main = ({ setTime, setInitialTime, startCount, replaceDigit, countFinished }) => {
   
-  render() {
-    
-    const { setTime, setInitialTime, countDown, countFinished } = this.props;
+  return (
+    <div className="jumbotron text-center">
 
-    return (
-      <div className="jumbotron text-center">
-        
+      <div className="row">
+        <div className="container" id="timerContainer">
+          <Timer 
+            countingDown={ setTime.countingDown }
+            currentTime={ setTime.currentTime }
+            replaceDigit={ replaceDigit }
+            countFinished={ countFinished }
+            />
+          <MarkContainer
+              pomodorosCompleted={ setTime.pomodorosCompleted } />
+        </div>
         <div className="row">
-          <div className="container" id="timerContainer">
-            <TimerContainer
-              currentTime={ setTime.currentTime }
-              countingDown={ setTime.countingDown }
-              countDown={ countDown }
-              countFinished={ countFinished }
-              setInitialTime={ setInitialTime } />
-
-            <MarkContainer pomodorosCompleted={ setTime.pomodorosCompleted } />
-          </div>
-
-          <div className="row">
-            <ButtonContainer
-              currentOption={ setTime.currentOption }
-              setInitialTime={ setInitialTime } />
-          </div>
+          <SelectBtn
+            countingDown={ setTime.countingDown }
+            setInitialTime={ setInitialTime }
+            label={ setTime.timerOptions[setTime.currentOption].label }
+            startCount={ startCount } />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Main;

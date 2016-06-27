@@ -5,27 +5,34 @@ function setTime(state = [], action) {
   
   switch (action.type) {
     case 'SET_INITIAL_TIME' :
-      
-      // action.startTime
-      
-      newState.countingDown = true;
-      
-      newState.currentTime = action.startTime;
-      
+
+      newState.currentTime = state.timerOptions[state.currentOption].startTime
+        .split('').map((digit) => parseInt(digit));
+      newState.countingDown = false;
+
       return {...state, ...newState};
-    case 'COUNT_DOWN' :
+
+    case 'START_COUNT' :
+
+      newState.currentTime = state.timerOptions[state.currentOption].startTime
+        .split('').map((digit) => parseInt(digit));
+      newState.countingDown = true;
+
+      return {...state, ...newState};
       
-      // action.index, action.totalTime
+    case 'REPLACE_DIGIT' :
       
-      let totalTime = action.totalTime.totalTime - 1,
-          minutes = Math.floor(totalTime / 60),
-          seconds = totalTime % 60,
-          minutesTens = Math.floor(minutes / 10),
-          minutesOnes = minutes % 10,
-          secondsTens = Math.floor(seconds / 10),
-          secondsOnes = seconds % 10;
+      let minTens = newState.currentTime[0] * 600,
+          minOnes = newState.currentTime[1] * 60,
+          secTens = newState.currentTime[2] * 10,
+          totalTime = minTens + minOnes + secTens + newState.currentTime[3];
       
-      newState.currentTime = [minutesTens, minutesOnes, secondsTens, secondsOnes];
+      totalTime -= 1;
+
+      newState.currentTime[3] = totalTime % 10;
+      newState.currentTime[2] = Math.floor((totalTime % 60) / 10);
+      newState.currentTime[1] = Math.floor(totalTime / 60);
+      newState.currentTime[0] = Math.floor(totalTime / 600);
       
       return {...state, ...newState};
       
@@ -37,13 +44,13 @@ function setTime(state = [], action) {
         newState.pomodorosCompleted = state.pomodorosCompleted + 1;
         newState.onBreak = true;
       }
-      
+
       if (state.pomodorosCompleted % 4 === 3 && newState.onBreak) {
-        newState.currentOption = state.timerOptions.longBreak;
+        newState.currentOption = 'longBreak';
       } else if (newState.onBreak) {
-        newState.currentOption = state.timerOptions.shortBreak;
+        newState.currentOption = 'shortBreak';
       } else {
-        newState.currentOption = state.timerOptions.pomodoro;
+        newState.currentOption = 'pomodoro';
       }
       
       return {...state, ...newState};

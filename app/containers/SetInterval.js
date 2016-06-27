@@ -1,10 +1,11 @@
 import React from 'react';
+import Digit from '../components/Digit';
 
-const SetInterval = (Component, state, intervalFn) => class SetInterval extends React.Component {
+const SetInterval = ({ countFinished, currentTime, replaceDigit }) => class extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = state;
+    this.state = {};
   }
 
   componentWillMount() {
@@ -17,10 +18,15 @@ const SetInterval = (Component, state, intervalFn) => class SetInterval extends 
 
   componentDidMount() {
     
-    if (this.state.totalTime > 0) {
+    let minTens = currentTime[0] * 600,
+        minOnes = currentTime[1] * 60,
+        secTens = currentTime[2] * 10,
+        totalTime = minTens + minOnes + secTens + currentTime[3];
+    
+    if (totalTime > 0) {
       this.setInterval(this.update.bind(this), 1000);
     } else {
-      this.props.countFinished();
+      countFinished();
     }
   }
 
@@ -29,11 +35,20 @@ const SetInterval = (Component, state, intervalFn) => class SetInterval extends 
   }
 
   update() {
-    this.setState(intervalFn);
+    this.setState(replaceDigit);
   }
 
   render() {
-    return <Component {...this.props} {...this.state} />
+    
+    return (
+      <div id="timer">
+          <Digit index={0} />
+          <Digit index={1} />
+          <div className="colon">:</div>
+          <Digit index={2} />
+          <Digit index={3} />
+      </div>
+    );
   }
 }
 

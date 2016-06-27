@@ -1,22 +1,26 @@
 // Add task
 
-export function setInitialTime(startTime) {
+export function setInitialTime(currentOption) {
   return {
     type: 'SET_INITIAL_TIME',
-    startTime: startTime, // Array of four numbers
+    currentOption: currentOption, // Array of four numbers
   };
 }
 
-export function countDown(totalTime) {
+export function startCount() {
   return {
-    type: 'COUNT_DOWN',
-    totalTime: totalTime // Number, total seconds remaining on timer
+    type: 'START_COUNT'
   }
 }
 
-export function countFinished(currentTime) {
+export function replaceDigit() {
   return {
-    type: 'COUNT_FINISHED',
-    currentTime: currentTime // 
+    type: 'REPLACE_DIGIT'
+  }
+}
+
+export function countFinished() {
+  return {
+    type: 'COUNT_FINISHED'
   }
 }

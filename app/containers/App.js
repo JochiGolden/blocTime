@@ -1,9 +1,6 @@
-import {connect} from 'react-redux';
-import Main from './Main';
+import { connect } from 'react-redux';
+import Main from '../components/Main';
 import * as actions from '../actionCreators';
-
-// Pass props from store to Main.js
-// Connect actionCreators
 
 function mapStateToProps(state) {
   return {
@@ -13,11 +10,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setInitialTime : function(startTime) {
-      dispatch(actions.setInitialTime(startTime));
+    setInitialTime : function(currentOption) {
+      dispatch(actions.setInitialTime(currentOption));
     },
-    countDown : function(totalTime) {
-      dispatch(actions.countDown(totalTime));
+    startCount : function() {
+      dispatch(actions.startCount());
+    },
+    replaceDigit : function() {
+      dispatch(actions.replaceDigit());
     },
     countFinished : function() {
       dispatch(actions.countFinished());

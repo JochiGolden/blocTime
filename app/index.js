@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 require("!style!css!./main.css");
 
 import store, {history} from "./store";
-import App from "./components/App";
+import App from "./containers/App";
 
 var routes = (
   <Provider store={store}>

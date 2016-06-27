@@ -1,10 +1,10 @@
 body {
-  background-color: teal;
+  background-color: white;
 }
 
 .jumbotron {
-  background-color: aqua;
-  color: teal;
+  background-color: white;
+  color: midnightblue;
   font: 1em Avenir;
   letter-spacing: 1.5px;
 }
@@ -18,8 +18,8 @@ body {
   margin: auto;
   
   padding: 5px;
-  background-color: orange;
-  border: 5px solid teal;
+  background-color: white;
+  border: 5px solid midnightblue;
   border-radius: 20px;
   box-shadow: 0 0 5px #333 inset;
 }
@@ -27,12 +27,16 @@ body {
 #timer {
   float: left;
   padding: 0 15px;
-  background-color: yellow;
+  background-color: white;
   border-radius: 10px 0 0 10px;
-  box-shadow: 0 0 10px #333 inset;
+  box-shadow: 0 0 5px #333 inset;
 }
 
-.digit {
+.digit-container {
+  float: left;
+}
+
+.digit, .colon {
   float: left;
   min-width: 24px;
   font: 3em Impact;
@@ -41,20 +45,20 @@ body {
 
 .digit-enter {
   opacity: 0.01;
-  transition: opacity 1s ease-in;
 }
 
 .digit-enter.digit-enter-active {
   opacity: 1;
+  transition: opacity 500ms ease-in;
 }
 
 .digit-leave {
   opacity: 1;
-  transition: opacity 1s ease-in;
 }
 
 .digit-leave.digit-leave-active {
   opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
 
 /*****************************************/
@@ -69,19 +73,19 @@ body {
 
 #markContainerText {
   padding: 0 15px;
-  background-color: deeppink;
-  color: yellow;
+  background-color: white;
+  color: midnightblue;
   margin-bottom: 5px;
   border-radius: 0 10px 0 0;
-  box-shadow: 0 0 10px #333 inset;
+  box-shadow: 0 0 5px #333 inset;
 }
 
 #marks {
   min-height: 27px;
-  color: yellow;
-  background-color: deeppink;
+  color: midnightblue;
+  background-color: white;
   border-radius: 0 0 10px 0;
-  box-shadow: 0 0 10px #333 inset;
+  box-shadow: 0 0 5px #333 inset;
 }
 
 .completion-mark {
@@ -95,21 +99,25 @@ body {
 .btn {
   width: 150px;
   margin-top: 15px;
-  color: yellow;
-  background-color: deeppink;
-  border: 7px solid teal;
+  color: midnightblue;
+  background-color: white;
+  border: 7px solid midnightblue;
   box-shadow: 0 0 10px #333 inset;
 }
 
 .btn:hover {
-  color: yellow;
+  color: midnightblue;
 }
 
 .btn:focus {
   outline: none;
-  color: yellow;
+  color: midnightblue;
 }
 
 .btn.focus {
-  color: yellow;
+  color: midnightblue;
+}
+
+.btn.select {
+  margin-right: 30px;
 }
