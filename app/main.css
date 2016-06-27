@@ -32,46 +32,33 @@ body {
   box-shadow: 0 0 5px #333 inset;
 }
 
-.digit {
+.digit-container {
+  float: left;
+}
+
+.digit, .colon {
   float: left;
   min-width: 24px;
   font: 3em Impact;
   vertical-align: middle;
 }
 
-.display-element {
-  display: initial;
-}
-
-.hide-element {
-  display: none;
-}
-
-.digit-appear {
+.digit-enter {
   opacity: 0.01;
 }
 
-.digit-appear.digit-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
-}
-
-.digit-enter {
-  display: none;
-}
-
 .digit-enter.digit-enter-active {
-  display: initial;
-  transition: display 500ms ease-in;
+  opacity: 1;
+  transition: opacity 500ms ease-in;
 }
 
 .digit-leave {
-  display: initial;
+  opacity: 1;
 }
 
 .digit-leave.digit-leave-active {
-  display: none;
-  transition: display 300ms ease-in;
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
 
 /*****************************************/

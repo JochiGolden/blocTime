@@ -13,23 +13,14 @@ export function startCount() {
   }
 }
 
-export function replaceDigit(index) {
+export function replaceDigit() {
   return {
-    type: 'REPLACE_DIGIT',
-    index: index // Index of digit in store.setTime.currentTime
+    type: 'REPLACE_DIGIT'
   }
 }
 
-export function zeroed(index) {
+export function countFinished() {
   return {
-    type: 'ZEROED',
-    index: index
-  }
-}
-
-export function countFinished(index) {
-  return {
-    type: 'COUNT_FINISHED',
-    index: index // 
+    type: 'COUNT_FINISHED'
   }
 }

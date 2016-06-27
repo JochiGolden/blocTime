@@ -3,26 +3,20 @@ import CompletionMark from '../components/CompletionMark';
 
 // Requires: setTime.pomodorosCompleted
 
-class MarkContainer extends React.Component {
+const MarkContainer = ({pomodorosCompleted}) => {
   
-  constructor (props) {
-    super(props)
-  }
-  
-  render() {
-    return (
-      <div id="markContainer">
-        <div className="row" id="markContainerText">
-          Completed Pomodoros
-        </div>
-        <div className="row" id="marks">
-          {[...Array(this.props.pomodorosCompleted)].map((component, index) =>
-            <CompletionMark key={index + 1} />
-           )}
-        </div>
+  return (
+    <div id="markContainer">
+      <div className="row" id="markContainerText">
+        Completed Pomodoros
       </div>
-    );
-  }
+      <div className="row" id="marks">
+        {[...Array(pomodorosCompleted)].map((component, index) =>
+          <CompletionMark key={index + 1} />
+         )}
+      </div>
+    </div>
+  );
 }
 
 export default MarkContainer;

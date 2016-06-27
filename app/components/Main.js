@@ -1,38 +1,34 @@
 import React from "react";
 import Timer from './Timer';
-import ButtonContainer from '../containers/ButtonContainer';
+import SelectBtn from './buttons/SelectBtn';
 import MarkContainer from '../containers/MarkContainer';
 
-class Main extends React.Component {
+const Main = ({ setTime, setInitialTime, startCount, replaceDigit, countFinished }) => {
   
-  render() {
-    
-    const { setTime, setInitialTime, startCount, replaceDigit, countFinished } = this.props;
+  return (
+    <div className="jumbotron text-center">
 
-    return (
-      <div className="jumbotron text-center">
-        
+      <div className="row">
+        <div className="container" id="timerContainer">
+          <Timer 
+            countingDown={ setTime.countingDown }
+            currentTime={ setTime.currentTime }
+            replaceDigit={ replaceDigit }
+            countFinished={ countFinished }
+            />
+          <MarkContainer
+              pomodorosCompleted={ setTime.pomodorosCompleted } />
+        </div>
         <div className="row">
-          <div className="container" id="timerContainer">
-            <Timer 
-              countingDown={ setTime.countingDown }
-              currentTime={ setTime.currentTime }
-              replaceDigit={ replaceDigit }
-              countFinished={ countFinished }
-              />
-            <MarkContainer
-                pomodorosCompleted={ setTime.pomodorosCompleted } />
-          </div>
-          <ButtonContainer
-              currentOption={ setTime.currentOption }
-              timerOptions={ setTime.timerOptions }
-              countingDown={ setTime.countingDown }
-              setInitialTime={ setInitialTime }
-              startCount={ startCount } />
+          <SelectBtn
+            countingDown={ setTime.countingDown }
+            setInitialTime={ setInitialTime }
+            label={ setTime.timerOptions[setTime.currentOption].label }
+            startCount={ startCount } />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Main;

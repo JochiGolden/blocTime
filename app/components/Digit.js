@@ -1,46 +1,16 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
-class Digit extends React.Component {
 
-  handleSetTimeOut() {
-    const { replaceDigit, countingDown, zeroed, value, index, period, visible } = this.props;
-    if (countingDown[index] && visible) {
-      if (value > 1) {
-        console.log(`decrementing value at index ${index}`);
-        window.setTimeout(replaceDigit.bind(null, index), period);
-      } else {
-        zeroed(index);
-      }
-    }
-  }
-  
-  componentDidMount() {
-    if (this.props.visible) {
-      console.log('Visible did mount');
-    }
+const DigitContainer = ({ currentTime, index }) => {
     
-    this.handleSetTimeOut();
-  }
-  
-  render() {
-    
-    const { index, visible, value } = this.props;
-    
-    return (
-        <div className={ visible ? "digit display-element" : "digit hide-element" }>
-            { value % 10 }
-        </div>
-    );
-  }
-};
+  return <div className="digit">{ currentTime[index] }</div>
+}
 
-Digit.propTypes = {
-  currentTime: PropTypes.array.isRequired,
-  countingDown: PropTypes.array.isRequired,
-  index: PropTypes.number.isRequired,
-  visible: PropTypes.bool.isRequired,
-  replaceDigit: PropTypes.func.isRequired,
-  zeroed: PropTypes.func.isRequired
-};
+function mapStateToProps(state) {
+  return {
+    currentTime : state.setTime.currentTime
+  };
+}
 
-export default Digit;
+export default connect(mapStateToProps)(DigitContainer);
