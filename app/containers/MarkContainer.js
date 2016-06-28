@@ -1,20 +1,21 @@
 import React from 'react';
 import CompletionMark from '../components/CompletionMark';
+import { markContainer, markContainerText, marks } from '../styles';
 
-// Requires: setTime.pomodorosCompleted
-
-const MarkContainer = ({pomodorosCompleted}) => {
+const MarkContainer = ({ pomodorosCompleted }) => {
   
   return (
-    <div id="markContainer">
-      <div className="row" id="markContainerText">
+    <div style={ markContainer }>
+
+      <div className="row" style={ markContainerText }>
         Completed Pomodoros
       </div>
-      <div className="row" id="marks">
+      <div className="row" style={ marks }>
         {[...Array(pomodorosCompleted)].map((component, index) =>
           <CompletionMark key={index + 1} />
          )}
       </div>
+
     </div>
   );
 }

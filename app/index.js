@@ -3,15 +3,13 @@ import {render} from "react-dom";
 import {Router, Route, IndexRoute} from "react-router";
 import {Provider} from "react-redux";
 
-require("!style!css!./main.css");
-
 import store, {history} from "./store";
-import App from "./containers/App";
+import Main from "./containers/Main";
 
 var routes = (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={App} />
+      <Route path="/" component={Main} />
     </Router>
   </Provider>
 );

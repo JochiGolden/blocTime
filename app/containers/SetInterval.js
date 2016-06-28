@@ -1,7 +1,9 @@
 import React from 'react';
 import Digit from '../components/Digit';
+import { digit, timer } from '../styles';
 
-const SetInterval = ({ countFinished, currentTime, replaceDigit, currentOption, playADing }) => class extends React.Component {
+
+const SetInterval = ( Component, { currentTime, countingDown, playADing, countFinished, replaceDigit }) =>  class extends React.Component {
   
   constructor(props) {
     super(props);
@@ -17,17 +19,18 @@ const SetInterval = ({ countFinished, currentTime, replaceDigit, currentOption, 
   }
 
   componentDidMount() {
-    
+    console.log('setintervaldidmount');
     let minTens = currentTime[0] * 600,
         minOnes = currentTime[1] * 60,
         secTens = currentTime[2] * 10,
         totalTime = minTens + minOnes + secTens + currentTime[3];
-    
-    if (totalTime > 0) {
-      this.setInterval(this.update.bind(this), 1000);
-    } else {
-      playADing();
-      countFinished();
+    if (countingDown) {
+      if (totalTime > 0) {
+        this.setInterval(this.update.bind(this), 1000);
+      } else {
+        playADing();
+        countFinished();
+      }
     }
   }
 
@@ -40,17 +43,16 @@ const SetInterval = ({ countFinished, currentTime, replaceDigit, currentOption, 
   }
 
   render() {
-    
     return (
-      <div id="timer">
-          <Digit index={0} />
-          <Digit index={1} />
-          <div className="colon">:</div>
-          <Digit index={2} />
-          <Digit index={3} />
+      <div style={ timer }>
+          <Component value={ currentTime[0] } />
+          <Component value={ currentTime[1] } />
+          <div style={ digit }>:</div>
+          <Component value={ currentTime[2] } />
+          <Component value={ currentTime[3] } />
       </div>
     );
   }
-}
+};
 
 export default SetInterval;

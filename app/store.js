@@ -7,11 +7,11 @@ import rootReducer from './reducers/index';
 const defaultState = {
   setTime : {
     "timerOptions" : {
-      "pomodoro" : { label : "Pomodoro", startTime : "0005" },
-      "shortBreak" : { label : "Short Break", startTime : "0005" },
-      "longBreak" : { label : "Long Break", startTime : "0005" }
+      "pomodoro" : { label : "Pomodoro", startTime : "0030" },
+      "shortBreak" : { label : "Short Break", startTime : "0500" },
+      "longBreak" : { label : "Long Break", startTime : "3000" }
     },
-    "currentTime" : [0, 0, 0, 5],
+    "currentTime" : [0, 1, 0, 0],
     "countingDown" : false,
     "currentOption" : "pomodoro",
     "onBreak" : false,

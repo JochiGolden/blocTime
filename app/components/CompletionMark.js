@@ -1,16 +1,9 @@
 import React from "react";
+import { completionMark } from '../styles';
 
-class CompletionMark extends React.Component {
+const CompletionMark = () => {
   
-  constructor(props) {
-    super(props);
-  }
-  
-  render() {
-    return (
-        <span className="completion-mark">✘</span>
-    );
-  }
+  return <span style={ completionMark }>✘</span>
 }
 
 export default CompletionMark;

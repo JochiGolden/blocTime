@@ -33,6 +33,7 @@ function setTime(state = [], action) {
       newState.currentTime[2] = Math.floor((totalTime % 60) / 10);
       newState.currentTime[1] = Math.floor(totalTime / 60);
       newState.currentTime[0] = Math.floor(totalTime / 600);
+      console.log('totalTime', totalTime, 'newState.currentTime', newState.currentTime, 'state.currentTime', state.currentTime);
       
       return {...state, ...newState};
       
@@ -58,7 +59,8 @@ function setTime(state = [], action) {
     case 'PLAY_A_DING' :
       
       const audioNode = document.getElementById('ding');
-      console.log(audioNode);
+      console.log('A ding is played');
+      audioNode.volume = 0.1;
       audioNode.play();
       
       return state;
