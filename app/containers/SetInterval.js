@@ -1,9 +1,11 @@
 import React from 'react';
 import Digit from '../components/Digit';
-import { digit, timer } from '../styles';
+import { digitStyle, timerStyle } from '../styles';
 
-
-const SetInterval = ( Component, { currentTime, countingDown, playADing, countFinished, replaceDigit }) =>  class extends React.Component {
+const SetInterval = (
+  { klass, currentTime, countingDown, currentOption, playADing,
+    countFinished, replaceDigit, logPomodoro
+  }) => class extends React.Component {
   
   constructor(props) {
     super(props);
@@ -30,6 +32,7 @@ const SetInterval = ( Component, { currentTime, countingDown, playADing, countFi
       } else {
         playADing();
         countFinished();
+        if (currentOption === 'pomodoro') { logPomodoro(); }
       }
     }
   }
@@ -44,12 +47,12 @@ const SetInterval = ( Component, { currentTime, countingDown, playADing, countFi
 
   render() {
     return (
-      <div style={ timer }>
-          <Component value={ currentTime[0] } />
-          <Component value={ currentTime[1] } />
-          <div style={ digit }>:</div>
-          <Component value={ currentTime[2] } />
-          <Component value={ currentTime[3] } />
+      <div style={ timerStyle } className={ klass }>
+        <Digit value={ currentTime[0] } />
+        <Digit value={ currentTime[1] } />
+        <div style={ digitStyle }>:</div>
+        <Digit value={ currentTime[2] } />
+        <Digit value={ currentTime[3] } />
       </div>
     );
   }

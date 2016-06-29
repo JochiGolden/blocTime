@@ -4,7 +4,7 @@ import {Router, Route, IndexRoute} from "react-router";
 import {Provider} from "react-redux";
 
 import store, {history} from "./store";
-import Main from "./containers/Main";
+import Main from "./Main";
 
 var routes = (
   <Provider store={store}>

@@ -1,4 +1,4 @@
-function setTime(state = [], action) {
+function setTime (state = [], action) {
   
   let newState = {};
   newState.currentTime = state.currentTime;
@@ -42,11 +42,11 @@ function setTime(state = [], action) {
       newState.countingDown = false;
       
       if (state.currentOption === 'pomodoro') {
-        newState.pomodorosCompleted = state.pomodorosCompleted + 1;
+        newState.currentTask.pomodoros = state.currentTask.pomodoros + 1;
         newState.onBreak = true;
       }
 
-      if (state.pomodorosCompleted % 4 === 3 && newState.onBreak) {
+      if (state.currentTask.pomodoros % 4 === 3 && newState.onBreak) {
         newState.currentOption = 'longBreak';
       } else if (newState.onBreak) {
         newState.currentOption = 'shortBreak';

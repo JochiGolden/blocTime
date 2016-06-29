@@ -1,110 +1,120 @@
-export const main = {
+export const mainStyle = {
+  width: '800px',
   paddingTop: '50px',
   color: 'midnightblue',
   font: '1em Avenir',
-  letterSpacing: '1.5px'
+  borderRadius: '3px'
+}
+
+/*****************************************/
+/* Top Container                         */
+/*****************************************/
+
+export const topContainerStyle = {
 }
 
 /*****************************************/
 /* Timer                                 */
 /*****************************************/
 
-export const timerContainer = {
-  maxWidth: '380px',
-  margin: 'auto',
-  
-  padding: '5px',
-  backgroundColor: 'none',
-  border: '5px solid midnightblue',
-  borderRadius: '20px'
+export const timerStyle = {
 }
 
-export const timer = {
+export const digitStyle = {
   float: 'left',
-  padding: '0 15px',
-  backgroundColor: 'none',
-  borderRadius: '10px 0 0 10px'
-}
-
-export const digit = {
-  float: 'left',
-  minWidth: '24px',
+  minWidth: '22px',
   font: '3em Impact',
   verticalAlign: 'middle'
 }
 
-//digit-enter {
-//  opacity: 0.01;
-//}
-//
-//.digit-enter.digit-enter-active {
-//  opacity: 1;
-//  transition: opacity 500ms ease-in;
-//}
-//
-//.digit-leave {
-//  opacity: 1;
-//}
-//
-//.digit-leave.digit-leave-active {
-//  opacity: 0.01;
-//  transition: opacity 300ms ease-in;
-//}
+/*****************************************/
+/* Current Task                          */
+/*****************************************/
+
+export const currentTaskStyle = {
+}
+
+export const taskContainerStyle = {
+  paddingTop: '5%'
+}
+
+export const taskItemStyle = {
+  paddingTop: '3%'
+}
+
+export const taskTitleStyle = {
+  fontSize: '2em',
+  paddingLeft: '5%',
+  overflow: 'hidden',
+  textAlign: 'left'
+}
+
+export const currentTitleStyle = {
+  fontSize: '1.5em'
+}
+
+export const taskTextStyle = {
+  paddingTop: '15px',
+  color: 'midnightblue',
+  paddingLeft: '5%',
+  textAlign: 'left'
+}
 
 /*****************************************/
 /* Marks                                 */
 /*****************************************/
 
-export const markContainer = {
+export const markContainerStyle = {
   float: 'right',
-  position: 'relative',
-  padding: '0 15px'
-}
-
-export const markContainerText = {
-  padding: '0 15px',
-  backgroundColor: 'none',
-  color: 'midnightblue',
-  marginBottom: '5px',
-  borderRadius: '0 10px 0 0'
-}
-
-export const marks = {
   minHeight: '27px',
   color: 'midnightblue',
-  backgroundColor: 'none',
-  borderRadius: '0 0 10px 0'
+  overflow: 'hidden',
+  textAlign: 'left',
 }
 
-export const completionMark = {
-  verticalAlign: '-4px'
+export const completionMarkStyle = {
+  fontSize: '1.5em'
 }
 
 /*****************************************/
 /* Button                                */
 /*****************************************/
 
-export const selectBtn = {
-  width: '150px',
+export const selectBtnStyle = {
+  width: '100%',
   marginTop: '15px',
   color: 'midnightblue',
-  border: '7px solid midnightblue',
-  backgroundColor: 'skyblue'
+  border: '3px solid midnightblue',
+  borderRadius: '3px',
+  letterSpacing: '1.5px',
+  textAlign: 'center',
+  ":hover": {
+    backgroundColor: 'gold'
+  }
 }
 
-//.btn:hover {
-//  color: midnightblue;
-//}
-//
-//.btn:focus {
-//  outline: none;
-//  color: midnightblue;
-//}
-//
-//.btn.focus {
-//  color: midnightblue;
-//}
-//
-//.btn.select {
-//  margin-right: 30px;
-//}
+/*****************************************/
+/* General                               */
+/*****************************************/
+
+export const hoverCursor = {
+  ":hover": {
+    cursor: 'pointer'
+  }
+}
+
+export const toolBtnStyle = {
+  textAlgin: 'center'
+}
+
+export const bound = {
+//  border: '3px solid midnightblue',
+//  borderRadius: '3px',
+  padding: '5px'
+}
+
+export const underline = {
+  marginLeft: '5%',
+  width: '90%',
+  borderBottom: '2px solid midnightblue'
+}

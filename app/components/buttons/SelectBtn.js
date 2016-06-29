@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Radium from 'radium';
 import { startCount, setInitialTime, replaceDigit } from '../../actionCreators';
-import { selectBtn } from '../../styles';
+import { selectBtnStyle, hoverCursor } from '../../styles';
 
 class SelectBtn extends React.Component {
     
@@ -16,15 +17,15 @@ class SelectBtn extends React.Component {
   
   render() {
     
-    const { countingDown, replaceDigit, startCount, label } = this.props;
+    const { countingDown, replaceDigit, startCount, label, klass } = this.props;
 
     return (
-      <button type="button"
-              className="btn btn-lg"
-              style={ selectBtn }
-              onClick={ this.handleClick.bind(null, [startCount, replaceDigit]) }>
-        { countingDown ? 'Reset' : label }
-      </button>
+      <div className={ klass }>
+        <div style={[ selectBtnStyle, hoverCursor ]}
+             onClick={ this.handleClick.bind(null, [startCount, replaceDigit]) }>
+          { countingDown ? 'Reset' : label }
+        </div>
+      </div>
     );
   }
 }
@@ -48,5 +49,7 @@ function mapDispatchToProps(dispatch) {
     }
   };
 }
+
+SelectBtn = Radium(SelectBtn);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectBtn);

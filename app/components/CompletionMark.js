@@ -1,9 +1,9 @@
 import React from "react";
-import { completionMark } from '../styles';
+import { completionMarkStyle } from '../styles';
 
 const CompletionMark = () => {
   
-  return <span style={ completionMark }>✘</span>
+  return <span style={ completionMarkStyle }>✘</span>
 }
 
 export default CompletionMark;

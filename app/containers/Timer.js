@@ -1,10 +1,8 @@
 import React from 'react';
-import { digit, timer } from '../styles';
 import { connect } from 'react-redux';
 import { countFinished, replaceDigit, playADing } from '../actionCreators';
 
 import SetInterval from './SetInterval';
-import Digit from '../components/Digit';
 
 class Timer extends React.Component {
   
@@ -13,14 +11,9 @@ class Timer extends React.Component {
   }
   
   render() {
-    console.log('Timer is rendering');
-    console.log(`counting down is ${this.props.countingDown}`);
-    const { currentTime, countingDown, countFinished, replaceDigit, playADing } = this.props;
+    const { klass, currentTime, countingDown, countFinished, replaceDigit, playADing } = this.props;
     
-    let Counter = countingDown ?
-        SetInterval(Digit, { currentTime, countingDown, countFinished, replaceDigit, playADing })
-        :
-        SetInterval(Digit, { currentTime, countingDown, countFinished, replaceDigit, playADing });
+    let Counter = SetInterval({ klass, currentTime, countingDown, countFinished, replaceDigit, playADing });
     
     return <Counter />;
 
@@ -45,6 +38,9 @@ function mapDispatchToProps(dispatch) {
     },
     playADing : function() {
       dispatch(playADing());
+    },
+    logPomodoro : function() {
+      dispatch(logPomodoro());
     }
   };
 }

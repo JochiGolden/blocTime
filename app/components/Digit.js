@@ -1,9 +1,9 @@
 import React from 'react';
-import { digit } from '../styles';
+import { digitStyle } from '../styles';
 
 const Digit = ({ value }) => {
 
-  return <div style={ digit }>{ value }</div>
+  return <div style={ digitStyle }>{ value }</div>
 }
 
 export default Digit;
