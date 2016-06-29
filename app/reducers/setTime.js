@@ -1,4 +1,4 @@
-function setTime(state = [], action) {
+function setTime (state = [], action) {
   
   let newState = {};
   newState.currentTime = state.currentTime;
@@ -33,6 +33,7 @@ function setTime(state = [], action) {
       newState.currentTime[2] = Math.floor((totalTime % 60) / 10);
       newState.currentTime[1] = Math.floor(totalTime / 60);
       newState.currentTime[0] = Math.floor(totalTime / 600);
+      console.log('totalTime', totalTime, 'newState.currentTime', newState.currentTime, 'state.currentTime', state.currentTime);
       
       return {...state, ...newState};
       
@@ -41,11 +42,11 @@ function setTime(state = [], action) {
       newState.countingDown = false;
       
       if (state.currentOption === 'pomodoro') {
-        newState.pomodorosCompleted = state.pomodorosCompleted + 1;
+        newState.currentTask.pomodoros = state.currentTask.pomodoros + 1;
         newState.onBreak = true;
       }
 
-      if (state.pomodorosCompleted % 4 === 3 && newState.onBreak) {
+      if (state.currentTask.pomodoros % 4 === 3 && newState.onBreak) {
         newState.currentOption = 'longBreak';
       } else if (newState.onBreak) {
         newState.currentOption = 'shortBreak';
@@ -58,7 +59,8 @@ function setTime(state = [], action) {
     case 'PLAY_A_DING' :
       
       const audioNode = document.getElementById('ding');
-      console.log(audioNode);
+      console.log('A ding is played');
+      audioNode.volume = 0.1;
       audioNode.play();
       
       return state;

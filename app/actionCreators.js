@@ -25,6 +25,12 @@ export function countFinished() {
   }
 }
 
+export function logPomodoro() {
+  return {
+    type: 'LOG_POMODORO'
+  };
+}
+
 export function playADing() {
   return {
     type: 'PLAY_A_DING'

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="39.998379"
+   height="39.824757"
+   viewBox="0 0 39.998379 39.824757"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="deleteIcon.svg"
+   inkscape:export-filename="/Users/JochiGold/github/bloc/blocTime/deleteIcon.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="16.748375"
+     inkscape:cx="19.611087"
+     inkscape:cy="19.912381"
+     inkscape:document-units="px"
+     inkscape:current-layer="svg2"
+     showgrid="false"
+     units="px"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:window-width="1395"
+     inkscape:window-height="855"
+     inkscape:window-x="88"
+     inkscape:window-y="40"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="icon"
+     sodipodi:insensitive="true">
+    <path
+       transform="translate(-296.04537,-409.31647)"
+       style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:3.9560256;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 305.72471,447.14647 c -1.09192,0.10722 -2.31775,-0.33314 -3.26765,-1.2783 l -3.13672,-3.11839 c -1.51982,-1.51225 -1.738,-3.73125 -0.48825,-4.97477 l 8.58918,-8.5464 -8.58918,-8.54639 c -1.24975,-1.24352 -1.03157,-3.46252 0.48825,-4.97478 l 3.13672,-3.11838 c 1.51982,-1.51226 3.74992,-1.72935 4.99967,-0.48581 l 8.58645,8.54369 8.58918,-8.54369 c 1.24977,-1.24354 3.47987,-1.02645 4.99969,0.48581 l 3.13673,3.11838 c 1.51981,1.51226 1.73799,3.73126 0.48823,4.97478 l -8.58918,8.54639 8.58918,8.5464 c 1.24976,1.24352 1.03158,3.46252 -0.48823,4.97477 l -3.13673,3.11839 c -1.51982,1.51226 -3.74992,1.72934 -4.99969,0.4858 l -8.58918,-8.54368 -8.58645,8.54368 c -0.46865,0.46633 -1.07686,0.72812 -1.73202,0.7925 z"
+       id="rect4569"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>

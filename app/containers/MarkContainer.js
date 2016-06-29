@@ -1,21 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { markContainerStyle } from '../styles';
+
 import CompletionMark from '../components/CompletionMark';
 
-// Requires: setTime.pomodorosCompleted
-
-const MarkContainer = ({pomodorosCompleted}) => {
+const MarkContainer = ({ pomodoros, klass }) => {
   
   return (
-    <div id="markContainer">
-      <div className="row" id="markContainerText">
-        Completed Pomodoros
-      </div>
-      <div className="row" id="marks">
-        {[...Array(pomodorosCompleted)].map((component, index) =>
+      <div style={ markContainerStyle } className={ klass }>
+        {[...Array(pomodoros)].map((component, index) =>
           <CompletionMark key={index + 1} />
          )}
       </div>
-    </div>
   );
 }
 

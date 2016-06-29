@@ -1,16 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { digitStyle } from '../styles';
 
+const Digit = ({ value }) => {
 
-const DigitContainer = ({ currentTime, index }) => {
-    
-  return <div className="digit">{ currentTime[index] }</div>
+  return <div style={ digitStyle }>{ value }</div>
 }
 
-function mapStateToProps(state) {
-  return {
-    currentTime : state.setTime.currentTime
-  };
-}
-
-export default connect(mapStateToProps)(DigitContainer);
+export default Digit;
