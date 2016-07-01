@@ -1,38 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Radium from 'radium';
-import { startCount, setInitialTime, replaceDigit } from '../../actionCreators';
-import { selectBtnStyle, hoverCursor } from '../../styles';
+import { startCount, setInitialTime  } from '../../actionCreators';
+import { selectBtnStyle } from '../../styles';
 
-class SelectBtn extends React.Component {
-    
-  componentDidMount() {
-    this.props.setInitialTime();
-  }
+let SelectBtn = ({ countingDown, startCount, setInitialTime, label, klass }) => {
   
-  handleClick(funcs) {
+  function handleClick(funcs) {
     funcs[0]();
     funcs[1]();
   }
   
-  render() {
-    
-    const { countingDown, replaceDigit, startCount, label, klass } = this.props;
-
-    return (
-      <div className={ klass }>
-        <div style={[ selectBtnStyle, hoverCursor ]}
-             onClick={ this.handleClick.bind(null, [startCount, replaceDigit]) }>
-          { countingDown ? 'Reset' : label }
-        </div>
+  return (
+    <div className={ klass }>
+      <div style={[ selectBtnStyle ]}
+           onClick={ handleClick.bind(null, [setInitialTime, startCount]) }>
+        { countingDown ? 'Reset' : label }
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 function mapStateToProps(state) {
   return {
-    label : state.setTime.timerOptions[state.setTime.currentOption].label
+    label : state.setTime.timerOptions[state.setTime.currentOption].label,
+    countingDown : state.setTime.countingDown
   };
 }
 
@@ -43,9 +35,6 @@ function mapDispatchToProps(dispatch) {
     },
     setInitialTime : function() {
       dispatch(setInitialTime());
-    },
-    replaceDigit : function() {
-      dispatch(replaceDigit());
     }
   };
 }

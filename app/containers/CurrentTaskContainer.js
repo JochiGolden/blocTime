@@ -1,31 +1,35 @@
 import React from 'react';
+import Radium from 'radium';
 import { connect } from 'react-redux';
-import { currentTaskStyle, underline } from '../styles';
+import { currentTaskStyle, currentTitleStyle } from '../styles';
 
 import TaskTitle from '../components/TaskTitle';
-import TaskText from '../components/TaskText';
 import MarkContainer from './MarkContainer';
+import Underline from '../components/Underline';
+import Subtask from '../components/SubTask';
 
-const CurrentTaskContainer = ({ currentTask }) => {
+let CurrentTaskContainer = ({ currentTask }) => {
   
-  const { title, text, pomodoros } = currentTask;
+  const { title, text, pomodoros, subtasks } = currentTask;
   
   return (
-      <div style={ currentTaskStyle }>
+      <div style={[ currentTaskStyle ]}>
         <div className="row">
 
-          <TaskTitle title={ title } klass={ "col-md-8" } />
-          <MarkContainer pomodoros={ pomodoros } klass={ "col-md-4" } />
+          <h1 className="col-md-7 col-md-offset-1" style={[ currentTitleStyle ]}>{ title }</h1>
+          <MarkContainer currentMarks={ true } pomodoros={ pomodoros } klass={ "col-md-4" } />
 
         </div>
         <div className="row">
         
-          <div className="col-md-12" style={ underline } />
+          <Underline />
         
         </div>
         <div className="row">
 
-          <TaskText text={ text } klass={ "col-md-12" }/>
+          { subtasks.map((subtext, index) => {
+            return <Subtask key={ `subtext-${index}` } text={ subtext } />
+          })}
 
         </div>
       </div>
@@ -34,8 +38,10 @@ const CurrentTaskContainer = ({ currentTask }) => {
 
 function mapStateToProps(state) {
   return {
-    currentTask : state.currentTask
+    currentTask : state.tasks.list[state.tasks.currentTask]
   };
 }
+
+CurrentTaskContainer = Radium(CurrentTaskContainer);
 
 export default connect(mapStateToProps)(CurrentTaskContainer);
