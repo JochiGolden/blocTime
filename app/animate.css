@@ -1,0 +1,24 @@
+/*****************************************/
+/* Animate Completion Mark               */
+/*****************************************/
+
+.logPomodoro-enter {
+  opacity: 0.01;
+  transform: translateX(1000%);
+  transition: opacity 500ms ease-in, transform 500ms ease-in;
+}
+
+.logPomodoro-enter.logPomodoro-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms ease-in, transform 500ms ease-in;
+}
+
+.logPomodoro-leave {
+  opacity: 1;
+}
+
+.logPomodoro-leave.logPomodoro-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

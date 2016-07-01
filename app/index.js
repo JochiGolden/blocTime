@@ -6,6 +6,8 @@ import {Provider} from "react-redux";
 import store, {history} from "./store";
 import Main from "./Main";
 
+require("!style!css!./animate.css");
+
 var routes = (
   <Provider store={store}>
     <Router history={history}>

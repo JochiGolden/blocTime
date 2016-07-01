@@ -2,7 +2,6 @@ import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 
 import setTime from './setTime';
-import currentTask from './currentTask';
 import tasks from './tasks';
 
 // !NOTE Individual reducers correspond to different
@@ -11,7 +10,6 @@ import tasks from './tasks';
 
 const rootReducer = combineReducers({
   setTime,
-  currentTask,
   tasks,
   routing: routerReducer
 });

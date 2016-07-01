@@ -2,9 +2,10 @@ import React from 'react';
 import Radium from 'radium';
 import { taskTitleStyle } from '../styles';
 
-const TaskTitle = ({ title, klass, current }) => {
+const TaskTitle = ({ title }) => {
 
-  return <div style={[ taskTitleStyle ]} className={ klass }>{ title }</div>
+  return <h3 style={[ taskTitleStyle ]}>{ title }</h3>
+
 }
 
 export default Radium(TaskTitle);

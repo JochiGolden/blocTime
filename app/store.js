@@ -5,36 +5,39 @@ import {browserHistory} from 'react-router';
 import rootReducer from './reducers/index';
 
 const defaultState = {
-  setTime : {
+  "setTime" : {
     "timerOptions" : {
       "pomodoro" : { label : "Pomodoro", startTime : "0005" },
-      "shortBreak" : { label : "Short Break", startTime : "0500" },
-      "longBreak" : { label : "Long Break", startTime : "3000" }
+      "shortBreak" : { label : "Short Break", startTime : "0005" },
+      "longBreak" : { label : "Long Break", startTime : "0005" }
     },
-    "currentTime" : [0, 0, 0, 1],
+    "currentTime" : [0, 0, 0, 5],
     "countingDown" : false,
     "currentOption" : "pomodoro",
-    "onBreak" : false
+    "onBreak" : false,
+    "consecutiveBreaks" : 0
   },
-  currentTask : {
-    "title" : "Try Out GIMP",
-    "text" : "Fiddle around a bit more and work through some tutorials",
-    "pomodoros" : 2
-  },
-  tasks : [
-    { "title" : "Eat A Bunch of Cereal",
-      "text" : "Cereal is delicious, and a good source of engery.",
-      "pomodoros" : 4,
-      "id" : 1 },
-    { "title" : "Debug This Program",
-      "text" : "Figure out the weirdness with your setInterval container once and for all.",
-      "pomodoros" : 0,
-      "id" : 2 },
-    { "title" : "Read the React DOCs",
-      "text" : "Take the time to grasp the fundamentals instead of rushing into a pile of mistakes and wasting hours with guess-and-check",
-      "pomodoros" : 1,
-      "id" : 3 }
-  ]
+  "tasks" : {
+    "currentTask" : 0,
+    "list" : [
+      { "id" : 0,
+        "title" : "Default Task",
+        "subtasks" : [
+          "subtask one",
+          "subtask two"
+        ],
+        "pomodoros" : 1
+      },
+      { "id" : 1,
+        "title" : "Second Task",
+        "subtasks" : [
+          "subtask one"
+        ],
+        "pomodoros" : 0
+      }
+    ],
+    "addingTask" : false
+  }
 };
 
 // window... is middleware inspector and logger for redux

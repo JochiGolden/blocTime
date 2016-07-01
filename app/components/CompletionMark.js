@@ -1,9 +1,10 @@
 import React from "react";
+import Radium from 'radium';
 import { completionMarkStyle } from '../styles';
 
 const CompletionMark = () => {
-  
-  return <span style={ completionMarkStyle }>✘</span>
+
+  return <div style={[ completionMarkStyle ]} className="glyphicon glyphicon-ok" />
 }
 
-export default CompletionMark;
+export default Radium(CompletionMark);
