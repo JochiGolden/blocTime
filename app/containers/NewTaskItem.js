@@ -19,16 +19,25 @@ class NewTaskItem extends React.Component {
   
   handleTitleChange(event) {
     let newState = {};
-    newState.title = event.target.value;
+    newState.title = this.state.title.length <= 16
+      ? event.target.value
+      : event.target.value.substring(0, 17);
     this.setState({...this.state, ...newState});
   }
   
   handleTextChange(index, event) {
     let newState = {};
     newState.text = this.state.text;
-    newState.text[index] = this.state.text[index]
-      ? event.target.value
-      : "" + event.target.value;
+    if (this.state.text[index]) {
+      if (this.state.text[index].length <= 40) {
+        newState.text[index] = event.target.value;
+      } else {
+        newState.text[index] = event.target.value.substring(0, 41);
+      }
+    } else {
+      newState.text[index] = "" + event.target.value;
+    }
+
     this.setState({...this.state, ...newState});
   }
   
@@ -64,7 +73,7 @@ class NewTaskItem extends React.Component {
         <div key={ `subtask-${i}` } className="row">
           <input
             type="text"
-            className="col-md-8"
+            className="col-md-10"
             style={[ subtaskFieldStyle ]}
             value={ this.state.text[i] ? this.state.text[i] : "" }
             placeholder="Write a sub task..."
@@ -76,7 +85,7 @@ class NewTaskItem extends React.Component {
     
     return (
       <div className="row">
-        <div className="col-md-10 col-md-offset-1">
+        <div className="col-md-12">
           <div className="row">
            
             <input
@@ -93,7 +102,7 @@ class NewTaskItem extends React.Component {
 
         </div>
         <div className="row">
-          <div className="col-md-3 col-md-offset-1">
+          <div className="col-md-5">
             <button key={ 'plus' }
                     style={[ toolBtnStyle ]}
                     onClick={ this.addAField.bind(this) }>

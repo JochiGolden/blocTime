@@ -8,6 +8,13 @@ export function setInitialTime() {
   };
 }
 
+export function setCurrentOption(option) {
+  return {
+    type: 'SET_CURRENT_OPTION',
+    option
+  };
+}
+
 export function startCount() {
   return {
     type: 'START_COUNT'
@@ -36,10 +43,10 @@ export function playADing() {
 /* TASKS                                 */
 /*****************************************/
 
-export function changeCurrentTask( index ) {
+export function changeCurrentTask( id ) {
   return {
     type: 'CHANGE_CURRENT_TASK',
-    index
+    id
   }
 }
 
@@ -60,5 +67,12 @@ export function addNewTask( title, text ) {
 export function logPomodoro() {
   return {
     type: 'LOG_POMODORO'
+  };
+}
+
+export function deleteHighlightedTask(id) {
+  return {
+    type: 'DELETE_HIGHLIGHTED_TASK',
+    id
   };
 }

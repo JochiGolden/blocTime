@@ -1,23 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Radium from 'radium';
-import { startCount, setInitialTime  } from '../../actionCreators';
-import { selectBtnStyle } from '../../styles';
+import { startCount, setInitialTime  } from '../actionCreators';
+import { selectBtnStyle, selectBtnTextStyle } from '../styles';
 
 let SelectBtn = ({ countingDown, startCount, setInitialTime, label, klass }) => {
-  
+
   function handleClick(funcs) {
     funcs[0]();
     funcs[1]();
   }
   
   return (
-    <div className={ klass }>
       <div style={[ selectBtnStyle ]}
            onClick={ handleClick.bind(null, [setInitialTime, startCount]) }>
-        { countingDown ? 'Reset' : label }
+          { countingDown
+              ? <p>Reset</p>
+              : <p>
+                  <span>Begin</span>
+                  <br />
+                  <span>{ label }</span>
+                </p>
+          }
       </div>
-    </div>
   );
 }
 
