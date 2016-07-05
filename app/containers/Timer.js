@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import Radium from 'radium';
 import { countFinished, replaceDigit, playADing, logPomodoro } from '../actionCreators';
 import { timerStyle, digitStyle } from '../styles';
-import { getTotalTime, convertTimeString } from '../utils';
+import { getTotalTime, getTimeAsArray, convertTimeString } from '../utils';
 
 import Digit from '../components/Digit';
-import Colon from '../components/Colon';
+import SelectBtn from '../components/SelectBtn';
 
 class Timer extends React.Component {
   
@@ -14,38 +14,58 @@ class Timer extends React.Component {
     super(props);
     this.state = {};
   }
-
+  
   componentWillReceiveProps(nextProps) {
-    
-    const { currentTime, currentOption, startTime, playADing, countFinished, replaceDigit, logPomodoro } = this.props;
 
-    let topOfCount = getTotalTime(nextProps.currentTime) === getTotalTime(startTime);
+    let { currentTime, currentOption, startTime, playADing, countFinished, replaceDigit, logPomodoro } = this.props;
     
-    if (nextProps.countingDown && topOfCount ) {
-      this.setState({
-        interval : setInterval(replaceDigit, 1000)
-      });
+    let nextTime = typeof nextProps.currentTime === 'object'
+      ? getTotalTime(nextProps.currentTime)
+      : nextProps.currentTime;
+    
+    let topOfCount = nextTime === getTotalTime(startTime);
+
+    if (nextProps.countingDown && topOfCount) {
+      if (!this.state.interval) {
+        this.setState({
+          interval : setInterval(replaceDigit, 1000)
+        });
+      }
     }
 
-    if (getTotalTime(currentTime) === 1) {
+    if (currentTime === 1) {
       playADing();
       countFinished();
       if (currentOption === 'pomodoro') { logPomodoro(); }
       clearInterval(this.state.interval);
+      delete this.state.interval;
     }
   }
 
   render() {
     
     const { klass, currentTime } = this.props;
+
+    let timeArray = typeof currentTime === 'string'
+      ? convertTimeString(currentTime)
+      : getTimeAsArray(currentTime);
     
     return (
-      <div style={ timerStyle } className={ klass }>
-        <Digit value={ currentTime[0] } />
-        <Digit value={ currentTime[1] } />
-        <Colon />
-        <Digit value={ currentTime[2] } />
-        <Digit value={ currentTime[3] } />
+      <div className="row" style={[{ position: 'relative', width: '100%' }]}>
+       <div className="col-md-12">
+        <div style={ timerStyle }>
+
+          <Digit value={ timeArray[0] } />
+          <Digit value={ timeArray[1] } />
+          <div className="col-md-1" />
+          <Digit value={ timeArray[2] } />
+          <Digit value={ timeArray[3] } />
+
+        </div>
+
+          <SelectBtn />
+
+        </div>
       </div>
     );
   }

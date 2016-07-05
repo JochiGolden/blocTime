@@ -7,36 +7,30 @@ import rootReducer from './reducers/index';
 const defaultState = {
   "setTime" : {
     "timerOptions" : {
-      "pomodoro" : { label : "Pomodoro", startTime : "0005" },
-      "shortBreak" : { label : "Short Break", startTime : "0005" },
-      "longBreak" : { label : "Long Break", startTime : "0005" }
+      "pomodoro" : { label : "Pomodoro", startTime : "2500" },
+      "shortBreak" : { label : "Short Break", startTime : "0500" },
+      "longBreak" : { label : "Long Break", startTime : "3000" }
     },
-    "currentTime" : [0, 0, 0, 5],
+    "currentTime" : "2500",
     "countingDown" : false,
     "currentOption" : "pomodoro",
     "onBreak" : false,
     "consecutiveBreaks" : 0
   },
   "tasks" : {
-    "currentTask" : 0,
-    "list" : [
-      { "id" : 0,
-        "title" : "Default Task",
+    "currentTask" : "id1",
+    "list" : {
+      "id1" : {
+        "title" : "Task",
         "subtasks" : [
-          "subtask one",
-          "subtask two"
-        ],
-        "pomodoros" : 1
-      },
-      { "id" : 1,
-        "title" : "Second Task",
-        "subtasks" : [
-          "subtask one"
+          "subtask 1",
+          "subtask 2"
         ],
         "pomodoros" : 0
       }
-    ],
-    "addingTask" : false
+    },
+    "addingTask" : false,
+    "taskHistory" : 1
   }
 };
 
