@@ -1,8 +1,8 @@
 export const mainStyle = {
-  width: '800px',
+  width: '550px',
   paddingTop: '50px',
   color: 'midnightblue',
-  font: '1em "Roboto Slab", serif',
+  font: '1.5em "Roboto Slab", serif',
   fontWeight: '300',
   borderRadius: '3px'
 }
@@ -19,19 +19,24 @@ export const topContainerStyle = {
 /*****************************************/
 
 export const timerStyle = {
+  position: 'relative',
+  width: '100%',
+  margin: '0% 0% 0% 23%',
+  zIndex: '-2'
 }
 
 export const digitStyle = {  
   float: 'left',
-  minWidth: '28px',
+  minWidth: '40px',
 
-  font: '700 3em "Roboto Slab", sans-serif',
-  color: 'yellow'
+  font: '700 5em "Roboto Slab", sans-serif',
+  color: 'crimson'
 }
 
 export const colonStyle = {
   float: 'left',
   minWidth: '15px',
+  padding: '15px',
   font: '3em Impact'
 }
 
@@ -40,19 +45,26 @@ export const colonStyle = {
 /*****************************************/
 
 export const currentTaskStyle = {
-  marginTop: '7px'
+  marginTop: '10%'
 }
 
 export const currentTitleStyle = {
-  marginTop: '0px',
-  marginBottom: '0px',
-  color: 'beige'
+  float: 'left',
+  margin: '0% 0% 0% 7%',
+
+  color: 'gold',
+  fontSize: '2.5em',
+
+  ":hover": {
+    cursor: 'default'
+  }
 }
 
 export const subtaskStyle = {
-  padding: '0',
-  margin: '5px 0 0 50px',
-
+  padding: '0px',
+  margin: '1% 0% 0% 7%',
+  
+  fontSize: '0.8em',
   color: 'beige',
   textAlign: 'left'
 }
@@ -62,24 +74,26 @@ export const subtaskStyle = {
 /*****************************************/
 
 export const taskListStyle = {
-  padding: '5% 0 5% 0'
+  padding: '5% 0%'
 }
 
-export const taskItemStyle = {
-  paddingTop: '1% 0 1% 0'
+export const taskBtnStyle = {
+  float: 'left',
+  width: '17%',
+  fontSize: '0.8em'
 }
 
 export const taskTitleStyle = {
   float: 'left',
-  minHeight: '30px',
   overflow: 'hidden',
-  
-  margin: '0 0 0 10%',
-  
-  color: 'beige',
+  minHeight: '2em',
+  margin: '0% 3% 0% 0%',
+  padding: '0%',
+
   textAlign: 'left',
+  color: 'beige',
   ":hover": {
-    cursor: 'pointer'
+    cursor: 'default'
   }
 }
 
@@ -94,10 +108,15 @@ export const newTaskItemStyle = {
 }
 
 export const titleFieldStyle = {
-  fontSize: '2em'
+  fontSize: '1.4em',
+  width: '75%',
+  padding: '5px'
 }
 
 export const subtaskFieldStyle = {
+  fontSize: '0.8em',
+  width: '75%',
+  padding: '5px'
 }
 
 /*****************************************/
@@ -105,16 +124,12 @@ export const subtaskFieldStyle = {
 /*****************************************/
 
 export const markContainerStyle = {
-  position: 'relative',
-  overflow: 'hidden',
-  minWidth: '100px',
-  left: '380px',
+  float: 'left',
+  paddingLeft: '5%',
+  minWidth: '20%',
+  maxHeight: '78px',
   
   color: 'midnightblue'
-}
-
-export const currentMarkStyle = {
-  left: '0px'
 }
 
 export const completionMarkStyle = {
@@ -129,43 +144,56 @@ export const completionMarkStyle = {
 /*****************************************/
 
 export const selectBtnStyle = {
-  width: '100%',
-  marginTop: '15px',
-
+  width: '36%',
+  height: '200px',
+  zIndex: '2',
+  position: 'relative',
+  textAlign: 'center',
+  paddingTop: '20%',
+  margin: '0% 0% 0% 20%',
+  
   color: 'beige',
   letterSpacing: '1.5px',
-  textAlign: 'center',
+  fontSize: '0.8em',
 
   border: '3px solid midnightblue',
   borderRadius: '3px',
   backgroundColor: 'initial',
-  transition: 'background-color 100ms',
 
   ":hover": {
     cursor: 'pointer',
-    backgroundColor: 'gold',
     color: 'midnightblue',
-    transition: 'background-color 100ms, color 100ms'
+    border: '5px solid gold'
   }
 }
 
 export const toolBtnStyle = {
   float: 'left',
-  padding: '5px 5px',
 
   color: 'beige',
   fontSize: '1em',
-  verticalAlign: '1px',
 
   border: 'none',
   backgroundColor: 'midnightblue',
   transition: 'background-color 200ms, color 200ms',
+
   ":hover": {
     cursor: 'pointer',
     backgroundColor: 'gold',
     color: 'midnightblue',
     transition: 'background-color 200ms, color 200ms'
   }
+}
+
+export const disabledBtnStyle = {
+  float: 'left',
+
+  color: 'lightgray',
+  fontSize: '1em',
+
+  border: 'none',
+  backgroundColor: 'gray',
+  cursor: 'default'
 }
 
 export const IconStyle = {
@@ -190,8 +218,6 @@ export const bound = {
 }
 
 export const underlineStyle = {
-  marginTop: '5px',
-  marginLeft: '5%',
-  width: '90%',
+  width: '80%',
   borderBottom: '2px solid midnightblue'
 }

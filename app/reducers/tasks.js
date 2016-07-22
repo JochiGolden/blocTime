@@ -6,8 +6,8 @@ function tasks (state = [], action) {
   switch (action.type) {
       
     case 'CHANGE_CURRENT_TASK' :
-      console.log('changed');
-      newState.currentTask = action.index;
+
+      newState.currentTask = action.id;
       
       return {...state, ...newState};
     
@@ -19,12 +19,21 @@ function tasks (state = [], action) {
       
     case "ADD_NEW_TASK" :
 
-      newState.list.push({
-        id: state.list.length,
-        title: action.title,
+      newState.taskHistory = state.taskHistory + 1;
+      
+      if (Object.keys(newState.list).length === 0) {
+        newState.currentTask = 'id' + newState.taskHistory
+      }
+      
+      let d = new Date();
+
+      newState.list['id' + newState.taskHistory] = {
         subtasks: action.text,
         pomodoros: 0
-      });
+      };
+      
+      newState.list['id' + newState.taskHistory].title =
+        !action.title ? '<Blank>' : action.title;
       
       newState.addingTask = false;
       
@@ -32,9 +41,20 @@ function tasks (state = [], action) {
     
     case "LOG_POMODORO" :
 
-      let index = state.currentTask;
+      let current = state.currentTask;
       
-      newState.list[index].pomodoros = state.list[index].pomodoros + 1;
+      newState.list[current].pomodoros = state.list[current].pomodoros + 1;
+      
+      return {...state, ...newState};
+    
+    case "DELETE_HIGHLIGHTED_TASK" :
+      
+      if (Object.keys(newState.list).length > 0) {
+        delete newState.list[action.id];
+        newState.currentTask = Object.keys(newState.list)[0];
+      } else if (Object.keys(newState.list).length === 0) {
+        newState.currentTask = null;
+      }
       
       return {...state, ...newState};
       

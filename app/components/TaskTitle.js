@@ -2,9 +2,9 @@ import React from 'react';
 import Radium from 'radium';
 import { taskTitleStyle } from '../styles';
 
-const TaskTitle = ({ title }) => {
+const TaskTitle = ({ title, clickHandler }) => {
 
-  return <h3 style={[ taskTitleStyle ]}>{ title }</h3>
+  return <h3 onClick={ clickHandler } style={[ taskTitleStyle ]}>{ title }</h3>
 
 }
 

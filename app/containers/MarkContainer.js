@@ -6,19 +6,35 @@ import { markContainerStyle, currentMarkStyle } from '../styles';
 
 import CompletionMark from '../components/CompletionMark';
 
-const MarkContainer = ({ currentMarks, pomodoros }) => {
+class MarkContainer extends React.Component {
 
-  return (
-    <div style={[ markContainerStyle, currentMarks ? currentMarkStyle : null ]}>
-      <ReactCSSTransitionGroup transitionName="logPomodoro" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+  render() {
 
-      {[...Array(pomodoros)].map((component, index) =>
-        <CompletionMark key={ `mark-${index + 1}`} />
-       )}
+    let { pomodoros } = this.props;
+    
+    return (
+      <div style={[ markContainerStyle ]}>
+        <ReactCSSTransitionGroup
+          transitionName="logPomodoro" 
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
 
-      </ReactCSSTransitionGroup>
-    </div>
-  );  
+        {[...Array(pomodoros)].map((component, index) =>
+          <CompletionMark key={ `mark-${index + 1}`} />
+         )}
+
+        </ReactCSSTransitionGroup>
+      </div>
+    );  
+  }
 }
 
-export default Radium(MarkContainer);
+function mapStateToProps(state, ownProps) {
+  return {
+    pomodoros : state.tasks.list[ownProps.id].pomodoros
+  }
+}
+
+MarkContainer = Radium(MarkContainer); 
+
+export default connect(mapStateToProps)(MarkContainer); 

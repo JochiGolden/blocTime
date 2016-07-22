@@ -1,42 +1,50 @@
 import React from "react";
 import Radium from 'radium';
-import { connect } from 'react-redux';
-import { changeCurrentTask } from '../actionCreators';
-import { taskItemStyle } from '../styles';
+import { taskBtnStyle } from '../styles';
 
 import TaskTitle from '../components/TaskTitle';
 import MarkContainer from './MarkContainer';
-import Icon from '../components/Icon';
+import TaskListBtns from '../components/TaskListBtns';
 
 class TaskItem extends React.Component {
   
-
-//  { show ? Buttons : null }
   constructor(props) {
     super(props)
     this.state = {
-      showButtons: false
+      Buttons :
+        <div style={[ taskBtnStyle ]}>&nbsp;</div>,
+      EmptyComponent :
+        <div style={[ taskBtnStyle ]}>&nbsp;</div>
     }
   }
-  
-  change() {
-    console.log('change')
-    let { dispatch, id } = this.props;
     
-    dispatch(changeCurrentTask(id));
+  showButtons() {
+    this.setState({
+      Buttons : <TaskListBtns id={ this.props.id } />
+    });
   }
-
+  
+  hideButtons() {
+    this.setState({
+        Buttons : this.state.EmptyComponent
+    });
+  }
+  
   render() {
     
-    const { id, title, pomodoros, changeCurrentTask } = this.props;
+    let { id, title, dispatch } = this.props;
     
     return (
-      <div style={[ taskItemStyle ]}>
+      <div key="taskItem"
+           onMouseEnter={ this.showButtons.bind(this) }
+           onMouseLeave={ this.hideButtons.bind(this) }>
         <div className="row">
-          
-          <TaskTitle onClick={ this.change } headerSize={ 'md' } title={ title } />
-           
-          <MarkContainer pomodoros={ pomodoros } />
+
+            { this.state.Buttons }
+
+            <TaskTitle headerSize={ 'md' } title={ title } />
+
+            <MarkContainer id={ id } />
 
         </div>
       </div>
@@ -44,6 +52,4 @@ class TaskItem extends React.Component {
   }
 }
 
-TaskItem = Radium(TaskItem);
-
-export default connect()(TaskItem);
+export default Radium(TaskItem);

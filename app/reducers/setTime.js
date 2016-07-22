@@ -7,9 +7,16 @@ function setTime (state = [], action) {
   
   switch (action.type) {
     case 'SET_INITIAL_TIME' :
-      
-      newState.currentTime = convertTimeString( state.timerOptions[state.currentOption].startTime );
+
+      newState.currentTime = convertTimeString(state.timerOptions[state.currentOption].startTime);
+      newState.currentTime = getTotalTime(newState.currentTime);
       newState.countingDown = false;
+
+      return {...state, ...newState};
+      
+    case 'SET_CURRENT_OPTION' :
+
+      newState.currentOption = action.option;
 
       return {...state, ...newState};
 
@@ -21,11 +28,7 @@ function setTime (state = [], action) {
       
     case 'REPLACE_DIGIT' :
       
-      let totalTime = getTotalTime(newState.currentTime);
-      
-      totalTime -= 1;
-
-      newState.currentTime = getTimeAsArray(totalTime);
+      newState.currentTime -= 1;
       
       return {...state, ...newState};
       
