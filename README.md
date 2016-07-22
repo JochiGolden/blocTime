@@ -1,4 +1,4 @@
-![blocTime](https://github.com/jstruthers/blocTime/tree/master/assets/logo.png "blocTime")
+![blocTime](https://github.com/jstruthers/blocTime/blob/master/assets/logo.png "blocTime")
 ###An Implementation of the Pomodoro Technique
 ---
 
