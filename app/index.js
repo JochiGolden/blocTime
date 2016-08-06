@@ -1,6 +1,6 @@
 import React from "react";
 import {render} from "react-dom";
-import {Router, Route, IndexRoute} from "react-router";
+import {Router, IndexRoute} from "react-router";
 import {Provider} from "react-redux";
 
 import store, {history} from "./store";
@@ -11,7 +11,7 @@ require("!style!css!./animate.css");
 var routes = (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={Main} />
+      <IndexRoute component={Main} />
     </Router>
   </Provider>
 );
