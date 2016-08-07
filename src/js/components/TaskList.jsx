@@ -1,0 +1,101 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { openForm } from '../actions';
+
+import TaskItem from './TaskItem.jsx';
+import NewTaskItem from '../sub_components/NewTaskItem.jsx';
+
+class TaskList extends React.Component {
+  
+  constructor(props) {
+    super(props)
+    this.state = {};
+  }
+  
+  componentWillMount() {
+    this.setState({
+      PromptComponent :
+        <button className="btn-tool" onClick={ this.props.openForm }>
+          <span className="icon glyphicon glyphicon-plus" />
+          Add New Task
+        </button>
+    })
+  }
+  
+  componentDidMount() {
+    this.setState({
+      NewTaskComponent : this.state.PromptComponent
+    });
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      NewTaskComponent : nextProps.addingTask
+        ? <NewTaskItem />
+        : this.state.PromptComponent
+    });
+  }
+  
+  tasksArray() {
+    let arr = Object.keys(this.props.list).map( task =>
+      <TaskItem
+        key={ task }
+        id={ task }
+        title={ this.props.list[task].title } />
+    );
+    
+    let sorted = arr.sort((a, b) => {
+      a = a.key.slice(-1);
+      b = b.key.slice(-1);
+      if ( a > b ) {
+        return -1;
+      } else if ( a < b ) {
+        return 1;
+      }
+      return 0;
+    });
+    return sorted;
+  }
+  
+  render() {
+    
+    const { list } = this.props;
+    let { NewTaskComponent } = this.state;
+
+    return (
+      <div>
+        <h3 className="heading">Task List</h3>
+        <div className="row underline" />
+        <div className="row">
+          <div className="task-list">
+
+            { this.tasksArray() }
+
+            <div className="row underline" />
+
+            { NewTaskComponent }
+
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    totalListItems : Object.keys(state.tasks.list).length,
+    list : state.tasks.list,
+    addingTask : state.tasks.addingTask
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    openForm : function() {
+      dispatch(openForm());
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
