@@ -21,66 +21,48 @@
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
-.counting-appear {
-  opacity: 0.01;
-}
-.counting-appear.counting-appear-active {
-  opacity: 1;
-  transition: opacity 0.5s ease-in;
-}
-.counting-enter {
-  opacity: 0.01;
-  -webkit-transform: translateX(1000%);
-          transform: translateX(1000%);
-  transition: opacity 500ms ease-in, -webkit-transform 500ms ease-in;
-  transition: opacity 500ms ease-in, transform 500ms ease-in;
-  transition: opacity 500ms ease-in, transform 500ms ease-in, -webkit-transform 500ms ease-in;
-}
-.counting-enter.counting-enter-active {
-  opacity: 1;
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
-  transition: opacity 500ms ease-in, -webkit-transform 500ms ease-in;
-  transition: opacity 500ms ease-in, transform 500ms ease-in;
-  transition: opacity 500ms ease-in, transform 500ms ease-in, -webkit-transform 500ms ease-in;
-}
-.counting-leave {
-  opacity: 1;
-}
-.counting-leave.counting-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}
 .btn {
   float: left;
 }
 .btn-select,
 .btn-select-stopped {
   width: 400px;
-  height: 150px;
+  height: 200px;
   float: none;
   z-index: 2;
   position: relative;
   text-align: center;
-  padding-top: 20%;
-  color: #f5f5dc;
   letter-spacing: 1.5px;
   font-size: 1.2em;
-  color: #ffd700;
-  border: 5px solid #ffd700;
+  color: #f5f5dc;
+  border: 5px solid #f5f5dc;
   background-color: initial;
+}
+.btn-select p,
+.btn-select-stopped p {
+  font-weight: 700;
+  position: relative;
+  top: 120px;
+}
+.btn-select p:hover,
+.btn-select-stopped p:hover {
+  cursor: pointer;
+}
+.btn-select:hover,
+.btn-select-stopped:hover {
+  cursor: pointer;
 }
 .btn-select-stopped,
 .btn-select-stopped-stopped {
-  border: 5px solid #191970;
+  border: 5px solid #f5f5dc;
   border-radius: 3px;
-  background-color: rgba(0,0,100,0.6);
+  background-color: rgba(0,100,0,0.6);
 }
 .btn-select-stopped:hover,
 .btn-select-stopped-stopped:hover {
   cursor: pointer;
-  color: #191970;
-  border: 5px solid #ffd700;
+  color: #f5f5dc;
+  border: 5px solid #f5f5dc;
   background-color: initial;
 }
 .btn-tool {
@@ -89,13 +71,13 @@
   color: #f5f5dc;
   font-size: 1.2em;
   border: none;
-  background-color: #191970;
+  background-color: #6b8e23;
   transition: background-color 200ms, color 200ms;
 }
 .btn-tool:hover {
   cursor: pointer;
-  background-color: #ffd700;
-  color: #191970;
+  background-color: #f5f5dc;
+  color: #6b8e23;
   transition: background-color 200ms, color 200ms;
 }
 .btn-new-task {
@@ -117,14 +99,15 @@
   margin: 0;
   margin-top: 5px;
   padding-left: 10px;
-  color: #ffd700;
+  color: #f5f5dc;
   font-size: 2.5em;
-  background-color: #191970;
+  background-color: #6b8e23;
+}
+.current-subtasks {
+  background-color: #f5f5dc;
 }
 .subtask {
-  margin: 0;
-  margin-top: 5px;
-  margin-left: 20px;
+  margin: 5px 0 5px 20px;
   max-width: 400px;
   font-size: 1em;
   text-align: left;
@@ -147,15 +130,15 @@
 .task-list-filler {
   width: 70px;
   height: 38px;
-  background-color: #87ceeb;
-  color: #191970;
+  background-color: #f5f5dc;
+  color: #6b8e23;
   font-size: 1.6rem;
 }
 .task-list-item {
   height: 45px;
   width: 100%;
   margin-top: 5px;
-  background-color: #191970;
+  background-color: #6b8e23;
 }
 .task-list-item-info {
   position: relative;
@@ -164,7 +147,7 @@
 .task-list-item-title {
   margin: 0;
   padding: 0;
-  color: #ffd700;
+  color: #f5f5dc;
   text-align: left;
 }
 .task-list-item-title:hover {
@@ -181,8 +164,8 @@
   height: 23px;
   padding: 5px;
   padding-top: 10px;
-  background-color: #191970;
-  color: #ffd700;
+  background-color: #6b8e23;
+  color: #f5f5dc;
 }
 .new-task-form-info:hover {
   cursor: default;
@@ -212,11 +195,11 @@
   padding-left: 5%;
   min-width: 20%;
   max-height: 78px;
-  color: #191970;
+  color: #6b8e23;
 }
 body {
-  background-color: #87ceeb;
-  color: #191970;
+  background-color: #ff6347;
+  color: #6b8e23;
   font: 1em "Roboto Slab", sans-serif;
   font-weight: 300;
 }
@@ -236,7 +219,7 @@ h4:hover {
   display: inline-block;
   padding: 5px;
   width: 390px;
-  background-color: #191970;
+  background-color: #6b8e23;
   font-weight: 300;
   color: #f5f5dc;
 }
@@ -298,14 +281,6 @@ h4:hover {
 }
 .hide {
   display: none;
-}
-.bound {
-  padding: 5px;
-}
-.underline {
-  margin-left: 0;
-  width: 400px;
-  border-bottom: 2px solid #191970;
 }
 
 /*# sourceMappingURL=app.css.map */

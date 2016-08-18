@@ -22,37 +22,3 @@
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
-
-/*****************************************/
-/* Animate Timer Digits                  */
-/*****************************************/
-
-.counting-appear {
-  opacity: 0.01;
-}
-
-.counting-appear.counting-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
-}
-
-.counting-enter {
-  opacity: 0.01;
-  transform: translateX(1000%);
-  transition: opacity 500ms ease-in, transform 500ms ease-in;
-}
-
-.counting-enter.counting-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 500ms ease-in, transform 500ms ease-in;
-}
-
-.counting-leave {
-  opacity: 1;
-}
-
-.counting-leave.counting-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}

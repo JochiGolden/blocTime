@@ -19,7 +19,7 @@ class CurrentTaskContainer extends React.Component {
             <h1 className="current-task-title">{ title }</h1>
             <MarkContainer id={ this.props.id } />
 
-            <div className="col">
+            <div className="current-subtasks col">
               { subtasks.map((subtext, index) => {
                 return <Subtask key={ `subtext-${index}` } text={ subtext } />
               })}

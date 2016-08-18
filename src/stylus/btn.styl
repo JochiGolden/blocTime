@@ -3,29 +3,37 @@
   
   &-select, &-select-stopped
     width 400px
-    height 150px
+    height 200px
     float none
     z-index 2
     position relative
     text-align center
-    padding-top 20%
 
-    color beige
     letter-spacing 1.5px
-    font-size 1.2em
-    
-    color gold
-    border 5px solid gold
+    font-size 1.2em    
+    color _color2
+    border 5px solid _color2
     background-color initial
     
-    &-stopped
-      border 5px solid midnightblue
-      border-radius 3px
-      background-color rgba(0, 0, 100, 0.6)
+    & p
+      font-weight 700
+      position relative
+      top 120px
+      
       &:hover
         cursor pointer
-        color midnightblue
-        border 5px solid gold
+
+    &:hover
+      cursor pointer
+    
+    &-stopped
+      border 5px solid _color2
+      border-radius 3px
+      background-color rgba(0, 100, 0, 0.6)
+      &:hover
+        cursor pointer
+        color _color2
+        border 5px solid _color2
         background-color initial
 
   &-tool
@@ -33,17 +41,17 @@
     height 38px
     width 40px
 
-    color beige
+    color _color2
     font-size 1.2em
 
     border none
-    background-color midnightblue
+    background-color _color1
     transition background-color 200ms, color 200ms
 
     &:hover
       cursor pointer
-      background-color gold
-      color midnightblue
+      background-color _color2
+      color _color1
       transition background-color 200ms, color 200ms
     
   &-new-task

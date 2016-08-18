@@ -1,10 +1,14 @@
+_color1 = olivedrab
+_color2 = beige
+_bgColor = tomato
+
 @import 'animate.styl'
 @import 'btn.styl'
 @import 'task.styl'
 
 body
-  background-color skyblue
-  color midnightblue
+  background-color _bgColor
+  color _color1
   font 1em "Roboto Slab", sans-serif
   font-weight 300
 
@@ -21,7 +25,7 @@ p, h1, h2, h3, h4
   display inline-block
   padding 5px
   width 390px
-  background-color midnightblue
+  background-color _color1
   
   font-weight 300
   color beige
@@ -72,13 +76,3 @@ p, h1, h2, h3, h4
 
 .hide
   display none
-
-.bound
-//  border 3px solid midnightblue
-//  borderRadius 3px
-  padding 5px
-
-.underline
-  margin-left 0
-  width 400px
-  border-bottom 2px solid midnightblue

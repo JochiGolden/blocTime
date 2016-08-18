@@ -35698,7 +35698,7 @@ var CurrentTaskContainer = function (_React$Component) {
             _react2.default.createElement(_MarkContainer2.default, { id: this.props.id }),
             _react2.default.createElement(
               'div',
-              { className: 'col' },
+              { className: 'current-subtasks col' },
               subtasks.map(function (subtext, index) {
                 return _react2.default.createElement(_SubTask2.default, { key: 'subtext-' + index, text: subtext });
               })
@@ -35958,26 +35958,21 @@ var TaskList = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TaskList).call(this, props));
 
-    _this.state = {};
+    _this.state = {
+      PromptComponent: _react2.default.createElement(
+        'button',
+        { className: 'btn-tool btn-new-task',
+          onClick: _this.props.openForm },
+        _react2.default.createElement('span', { className: 'ion-plus-circled', style: { marginRight: '5px' } }),
+        'Add New Task'
+      )
+    };
     return _this;
   }
 
   _createClass(TaskList, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.setState({
-        PromptComponent: _react2.default.createElement(
-          'button',
-          { className: 'btn-tool btn-new-task',
-            onClick: this.props.openForm },
-          _react2.default.createElement('span', { className: 'ion-plus-circled', style: { marginRight: '5px' } }),
-          'Add New Task'
-        )
-      });
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
       this.setState({
         NewTaskComponent: this.state.PromptComponent
       });

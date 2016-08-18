@@ -9,26 +9,22 @@ class TaskList extends React.Component {
   
   constructor(props) {
     super(props)
-    this.state = {};
-  }
-  
-  componentWillMount() {
-    this.setState({
-      PromptComponent :
+    this.state = {
+      PromptComponent: (
         <button className="btn-tool btn-new-task"
                 onClick={ this.props.openForm }>
           <span className="ion-plus-circled" style={{ marginRight: '5px'}} />
           Add New Task
-        </button>
+        </button>)
+    };
+  }
+  
+  componentWillMount() {
+    this.setState({
+      NewTaskComponent: this.state.PromptComponent
     })
   }
-  
-  componentDidMount() {
-    this.setState({
-      NewTaskComponent : this.state.PromptComponent
-    });
-  }
-  
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       NewTaskComponent : nextProps.addingTask
@@ -73,7 +69,6 @@ class TaskList extends React.Component {
               { this.tasksArray() }
 
               { NewTaskComponent }
-
             </div>
           </div>
         </div>
