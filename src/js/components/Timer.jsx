@@ -48,21 +48,18 @@ class Timer extends React.Component {
       : getTimeAsArray(currentTime);
     
     return (
-      <div className="row">
-       <div className="col-md-12">
-        <div className="timer">
+      <div className="row row-center">
 
+        <div className="timer row row-space">
           <div className="timer-digit">{ timeArray[0] }</div>
           <div className="timer-digit">{ timeArray[1] }</div>
           <div className="timer-colon col-md-1 ">:</div>
           <div className="timer-digit">{ timeArray[2] }</div>
           <div className="timer-digit">{ timeArray[3] }</div>
-
         </div>
 
-          <SelectBtn />
+        <SelectBtn />
 
-        </div>
       </div>
     );
   }

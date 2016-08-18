@@ -15,8 +15,9 @@ class TaskList extends React.Component {
   componentWillMount() {
     this.setState({
       PromptComponent :
-        <button className="btn-tool" onClick={ this.props.openForm }>
-          <span className="icon glyphicon glyphicon-plus" />
+        <button className="btn-tool btn-new-task"
+                onClick={ this.props.openForm }>
+          <span className="ion-plus-circled" style={{ marginRight: '5px'}} />
           Add New Task
         </button>
     })
@@ -63,18 +64,17 @@ class TaskList extends React.Component {
     let { NewTaskComponent } = this.state;
 
     return (
-      <div>
-        <h3 className="heading">Task List</h3>
-        <div className="row underline" />
-        <div className="row">
-          <div className="task-list">
+      <div className="row">
+        <div className="col">
+          <h3 className="row heading">Task List</h3>
+          <div className="row">
+            <div className="task-list col">
 
-            { this.tasksArray() }
+              { this.tasksArray() }
 
-            <div className="row underline" />
+              { NewTaskComponent }
 
-            { NewTaskComponent }
-
+            </div>
           </div>
         </div>
       </div>

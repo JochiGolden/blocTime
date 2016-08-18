@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import MarkContainer from './MarkContainer.jsx';
-import { Subtask } from '../sub_components/SubTask.jsx';
+import Subtask from '../sub_components/SubTask.jsx';
 
 class CurrentTaskContainer extends React.Component {
   
@@ -12,34 +12,27 @@ class CurrentTaskContainer extends React.Component {
       let { title, text, subtasks } = this.props.currentTask;
       
       return (
-        <div className="current-task">
-          <h3 className="heading">Current Task</h3>
-          <div className="row underline" />
-          <div className="flex-row">
+        <div className="row">
+          <div className="col">
+            <h3 className="heading">Current Task</h3>
 
             <h1 className="current-task-title">{ title }</h1>
             <MarkContainer id={ this.props.id } />
 
-          </div>
-
-            <div className="row underline" />
-
-          <div className="row">
-
-            { subtasks.map((subtext, index) => {
-              return <Subtask key={ `subtext-${index}` } text={ subtext } />
-            })}
-
+            <div className="col">
+              { subtasks.map((subtext, index) => {
+                return <Subtask key={ `subtext-${index}` } text={ subtext } />
+              })}
+            </div>
           </div>
         </div>
       );
     } else {
       return (
-        <div className="current-task">
-          <div className="flex-row">
+        <div className="current-task row">
+          <div className="col">
             <h1 className="current-task-title">&lt;Add A Task&gt;</h1>
           </div>
-          <div className="row underline" />
         </div>
       );
     }

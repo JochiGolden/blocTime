@@ -17,7 +17,7 @@ class MarkContainer extends React.Component {
 
         {[...Array(pomodoros)].map((component, index) => {
           return <div key={ `mark${index}` }
-                      className="completion-mark glyphicon glyphicon-ok" />
+                      className="completion-mark ion-checkmark" />
         })}
 
         </ReactCSSTransitionGroup>

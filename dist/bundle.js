@@ -35603,29 +35603,13 @@ var App = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         "div",
-        { className: "container main" },
+        { className: "row row-center main" },
         _react2.default.createElement(
           "div",
-          { className: "row" },
-          _react2.default.createElement(
-            "div",
-            { className: "col-md-10 col-md-offset-1" },
-            _react2.default.createElement(
-              "div",
-              { className: "row" },
-              _react2.default.createElement(_Timer2.default, null)
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: "row" },
-              _react2.default.createElement(_CurrentTaskContainer2.default, null)
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: "row" },
-              _react2.default.createElement(_TaskList2.default, null)
-            )
-          )
+          { className: "col col-center", style: { width: "600px" } },
+          _react2.default.createElement(_Timer2.default, null),
+          _react2.default.createElement(_CurrentTaskContainer2.default, null),
+          _react2.default.createElement(_TaskList2.default, null)
         )
       );
     }
@@ -35665,6 +35649,8 @@ var _MarkContainer2 = _interopRequireDefault(_MarkContainer);
 
 var _SubTask = require('../sub_components/SubTask.jsx');
 
+var _SubTask2 = _interopRequireDefault(_SubTask);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35695,46 +35681,43 @@ var CurrentTaskContainer = function (_React$Component) {
 
         return _react2.default.createElement(
           'div',
-          { className: 'current-task' },
-          _react2.default.createElement(
-            'h3',
-            { className: 'heading' },
-            'Current Task'
-          ),
-          _react2.default.createElement('div', { className: 'row underline' }),
+          { className: 'row' },
           _react2.default.createElement(
             'div',
-            { className: 'flex-row' },
+            { className: 'col' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'heading' },
+              'Current Task'
+            ),
             _react2.default.createElement(
               'h1',
               { className: 'current-task-title' },
               title
             ),
-            _react2.default.createElement(_MarkContainer2.default, { id: this.props.id })
-          ),
-          _react2.default.createElement('div', { className: 'row underline' }),
-          _react2.default.createElement(
-            'div',
-            { className: 'row' },
-            subtasks.map(function (subtext, index) {
-              return _react2.default.createElement(_SubTask.Subtask, { key: 'subtext-' + index, text: subtext });
-            })
+            _react2.default.createElement(_MarkContainer2.default, { id: this.props.id }),
+            _react2.default.createElement(
+              'div',
+              { className: 'col' },
+              subtasks.map(function (subtext, index) {
+                return _react2.default.createElement(_SubTask2.default, { key: 'subtext-' + index, text: subtext });
+              })
+            )
           )
         );
       } else {
         return _react2.default.createElement(
           'div',
-          { className: 'current-task' },
+          { className: 'current-task row' },
           _react2.default.createElement(
             'div',
-            { className: 'flex-row' },
+            { className: 'col' },
             _react2.default.createElement(
               'h1',
               { className: 'current-task-title' },
               '<Add A Task>'
             )
-          ),
-          _react2.default.createElement('div', { className: 'row underline' })
+          )
         );
       }
     }
@@ -35807,7 +35790,7 @@ var MarkContainer = function (_React$Component) {
             transitionLeaveTimeout: 300 },
           [].concat(_toConsumableArray(Array(pomodoros))).map(function (component, index) {
             return _react2.default.createElement('div', { key: 'mark' + index,
-              className: 'completion-mark glyphicon glyphicon-ok' });
+              className: 'completion-mark ion-checkmark' });
           })
         )
       );
@@ -35871,14 +35854,21 @@ var TaskItem = function (_React$Component) {
       ),
       EmptyComponent: _react2.default.createElement(
         'div',
-        { className: 'task-list-btn' },
-        ' '
+        { className: 'task-list-filler row row-center' },
+        _react2.default.createElement('span', { className: 'ion-chevron-right' })
       )
     };
     return _this;
   }
 
   _createClass(TaskItem, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.setState({
+        Buttons: this.state.EmptyComponent
+      });
+    }
+  }, {
     key: 'showButtons',
     value: function showButtons() {
       this.setState({
@@ -35904,13 +35894,13 @@ var TaskItem = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { key: id,
-          className: 'task-list-item',
+          className: 'task-list-item row',
           onMouseEnter: this.showButtons.bind(this),
           onMouseLeave: this.hideButtons.bind(this) },
+        this.state.Buttons,
         _react2.default.createElement(
           'div',
-          { className: 'row' },
-          this.state.Buttons,
+          { className: 'row task-list-item-info' },
           _react2.default.createElement(
             'h3',
             { className: 'task-list-item-title' },
@@ -35978,8 +35968,9 @@ var TaskList = function (_React$Component) {
       this.setState({
         PromptComponent: _react2.default.createElement(
           'button',
-          { className: 'btn-tool', onClick: this.props.openForm },
-          _react2.default.createElement('span', { className: 'icon glyphicon glyphicon-plus' }),
+          { className: 'btn-tool btn-new-task',
+            onClick: this.props.openForm },
+          _react2.default.createElement('span', { className: 'ion-plus-circled', style: { marginRight: '5px' } }),
           'Add New Task'
         )
       });
@@ -36031,22 +36022,24 @@ var TaskList = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
-        _react2.default.createElement(
-          'h3',
-          { className: 'heading' },
-          'Task List'
-        ),
-        _react2.default.createElement('div', { className: 'row underline' }),
+        { className: 'row' },
         _react2.default.createElement(
           'div',
-          { className: 'row' },
+          { className: 'col' },
+          _react2.default.createElement(
+            'h3',
+            { className: 'row heading' },
+            'Task List'
+          ),
           _react2.default.createElement(
             'div',
-            { className: 'task-list' },
-            this.tasksArray(),
-            _react2.default.createElement('div', { className: 'row underline' }),
-            NewTaskComponent
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'task-list col' },
+              this.tasksArray(),
+              NewTaskComponent
+            )
           )
         )
       );
@@ -36166,41 +36159,37 @@ var Timer = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'row' },
+        { className: 'row row-center' },
         _react2.default.createElement(
           'div',
-          { className: 'col-md-12' },
+          { className: 'timer row row-space' },
           _react2.default.createElement(
             'div',
-            { className: 'timer' },
-            _react2.default.createElement(
-              'div',
-              { className: 'timer-digit' },
-              timeArray[0]
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'timer-digit' },
-              timeArray[1]
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'timer-colon col-md-1 ' },
-              ':'
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'timer-digit' },
-              timeArray[2]
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'timer-digit' },
-              timeArray[3]
-            )
+            { className: 'timer-digit' },
+            timeArray[0]
           ),
-          _react2.default.createElement(_SelectBtn2.default, null)
-        )
+          _react2.default.createElement(
+            'div',
+            { className: 'timer-digit' },
+            timeArray[1]
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'timer-colon col-md-1 ' },
+            ':'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'timer-digit' },
+            timeArray[2]
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'timer-digit' },
+            timeArray[3]
+          )
+        ),
+        _react2.default.createElement(_SelectBtn2.default, null)
       );
     }
   }]);
@@ -36578,16 +36567,13 @@ var NewTaskItem = function (_React$Component) {
           i = 0;
 
       while (i < this.state.subtaskFields) {
-        subtasks.push(_react2.default.createElement(
-          'div',
-          { key: 'subtask-' + i, className: 'row' },
-          _react2.default.createElement('input', {
-            type: 'text',
-            className: 'new-task-form-field-subtask col-md-10 ',
-            value: this.state.text[i] ? this.state.text[i] : "",
-            placeholder: 'Write a sub task...',
-            onChange: this.handleTextChange.bind(this, i) })
-        ));
+        subtasks.push(_react2.default.createElement('input', {
+          key: 'subtask-' + i,
+          type: 'text',
+          className: 'new-task-form-field-subtask row',
+          value: this.state.text[i] ? this.state.text[i] : "",
+          placeholder: 'Write a sub task...',
+          onChange: this.handleTextChange.bind(this, i) }));
         i += 1;
       }
 
@@ -36596,47 +36582,46 @@ var NewTaskItem = function (_React$Component) {
         { className: 'new-task-form row' },
         _react2.default.createElement(
           'div',
-          { className: 'col-md-12' },
+          { className: 'col' },
+          _react2.default.createElement('input', {
+            type: 'text',
+            className: 'new-task-form-field-title row',
+            value: this.state.title,
+            placeholder: 'Enter a title...',
+            onChange: this.handleTitleChange.bind(this) }),
+          subtasks.map(function (subtask) {
+            return subtask;
+          }),
           _react2.default.createElement(
             'div',
             { className: 'row' },
-            _react2.default.createElement('input', {
-              type: 'text',
-              className: 'new-task-form-field-title col-md-6 ',
-              value: this.state.title,
-              placeholder: 'Enter a title...',
-              onChange: this.handleTitleChange.bind(this) })
-          ),
-          subtasks.map(function (subtask) {
-            return subtask;
-          })
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-5' },
+            _react2.default.createElement(
+              'span',
+              { className: 'new-task-form-info' },
+              'Add/Remove Subtasks ',
+              _react2.default.createElement('span', { className: 'ion-chevron-right' })
+            ),
             _react2.default.createElement(
               'button',
               { key: 'plus',
                 className: 'btn-tool',
                 onClick: this.addAField.bind(this) },
-              _react2.default.createElement('span', { className: 'icon glyphicon glyphicon-plus-sign' })
+              _react2.default.createElement('span', { className: 'ion-plus-circled' })
             ),
             _react2.default.createElement(
               'button',
               { key: 'minus',
                 className: 'btn-tool',
                 onClick: this.removeAField.bind(this) },
-              _react2.default.createElement('span', { className: 'icon glyphicon glyphicon-minus-sign' })
+              _react2.default.createElement('span', { className: 'ion-minus-circled' })
             ),
             _react2.default.createElement(
               'button',
               { key: 'finish',
                 className: 'btn-tool',
+                style: { width: '32%' },
                 onClick: this.finishTask.bind(this) },
-              _react2.default.createElement('span', { className: 'icon glyphicon glyphicon-thumbs-up' }),
+              _react2.default.createElement('span', { className: 'ion-thumbsup', style: { marginRight: '5px' } }),
               'Finish'
             )
           )
@@ -36745,7 +36730,9 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Subtask = undefined;
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
@@ -36755,21 +36742,59 @@ var _reactRedux = require('react-redux');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Subtask = exports.Subtask = function Subtask(_ref) {
-  var text = _ref.text;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Subtask = function (_Component) {
+  _inherits(Subtask, _Component);
+
+  function Subtask(props) {
+    _classCallCheck(this, Subtask);
+
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Subtask).call(this, props));
+
+    _this.state = {
+      completed: false,
+      icon: 'ion-chevron-right'
+    };
+    return _this;
+  }
+
+  _createClass(Subtask, [{
+    key: 'handleClick',
+    value: function handleClick() {
+      this.state.completed ? this.setState({ completed: false, icon: 'ion-chevron-right' }) : this.setState({ completed: true, icon: 'ion-minus' });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _state = this.state;
+      var icon = _state.icon;
+      var completed = _state.completed;
 
 
-  return _react2.default.createElement(
-    'div',
-    { className: 'row' },
-    _react2.default.createElement(
-      'p',
-      { className: 'subtask' },
-      _react2.default.createElement('span', { style: { marginRight: '15px' }, className: 'glyphicon glyphicon-menu-right' }),
-      text
-    )
-  );
-};
+      return _react2.default.createElement(
+        'div',
+        { className: 'row' },
+        _react2.default.createElement(
+          'p',
+          { className: 'subtask' + (completed ? ' cross-out' : ''),
+            onClick: this.handleClick.bind(this) },
+          _react2.default.createElement('span', { style: { marginRight: '15px' },
+            className: icon + ' subtask-icon' }),
+          this.props.text
+        )
+      );
+    }
+  }]);
+
+  return Subtask;
+}(_react.Component);
+
+exports.default = Subtask;
 
 },{"react":552,"react-redux":356}],579:[function(require,module,exports){
 'use strict';
@@ -36828,22 +36853,22 @@ var TaskItem = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { key: 'buttonContainer', className: 'task-list-btn' },
+        { key: 'buttonContainer', className: 'task-list-btn row' },
         countingDown ? _react2.default.createElement(
           'button',
           { key: 'menu-up', className: 'btn-disabled' },
-          _react2.default.createElement('span', { className: 'icon glyphicon glyphicon-circle-arrow-up' })
+          _react2.default.createElement('span', { className: 'ion-ios-undo' })
         ) : _react2.default.createElement(
           'button',
           { key: 'menu-up', className: 'btn-tool',
             onClick: this.swapCurrentTask.bind(null, id, dispatch) },
-          _react2.default.createElement('span', { className: 'icon glyphicon glyphicon-circle-arrow-up' })
+          _react2.default.createElement('span', { className: 'ion-ios-undo' })
         ),
         _react2.default.createElement(
           'button',
           { key: 'delete', className: 'btn-tool',
             onClick: this.deleteTask.bind(null, id, dispatch) },
-          _react2.default.createElement('span', { className: 'icon glyphicon glyphicon-remove-sign' })
+          _react2.default.createElement('span', { className: 'ion-trash-a' })
         )
       );
     }

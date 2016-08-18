@@ -18,23 +18,23 @@ class TaskItem extends React.Component {
     let { id, title, dispatch, countingDown } = this.props;
     
     return (
-      <div key="buttonContainer" className="task-list-btn">
+      <div key="buttonContainer" className="task-list-btn row">
         
         { countingDown ?
             <button key="menu-up" className="btn-disabled">
-              <span className="icon glyphicon glyphicon-circle-arrow-up" />
+              <span className="ion-ios-undo" />
             </button>
           :
             <button key="menu-up" className="btn-tool"
                     onClick={ this.swapCurrentTask.bind(null, id, dispatch) }>
-              <span className="icon glyphicon glyphicon-circle-arrow-up" />
+              <span className="ion-ios-undo" />
             </button>
         }
         
 
         <button key="delete" className="btn-tool"
                 onClick={ this.deleteTask.bind(null, id, dispatch) }>
-          <span className="icon glyphicon glyphicon-remove-sign" />
+          <span className="ion-trash-a" />
         </button>
 
       </div>

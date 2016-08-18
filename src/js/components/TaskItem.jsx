@@ -11,8 +11,16 @@ export default class TaskItem extends React.Component {
       Buttons :
         <div className="task-list-btn">&nbsp;</div>,
       EmptyComponent :
-        <div className="task-list-btn">&nbsp;</div>
+        <div className="task-list-filler row row-center">
+          <span className="ion-chevron-right"></span>
+        </div>
     }
+  }
+  
+  componentWillMount() {
+    this.setState({
+      Buttons: this.state.EmptyComponent
+    })
   }
     
   showButtons() {
@@ -23,7 +31,7 @@ export default class TaskItem extends React.Component {
   
   hideButtons() {
     this.setState({
-        Buttons : this.state.EmptyComponent
+      Buttons : this.state.EmptyComponent
     });
   }
   
@@ -33,18 +41,17 @@ export default class TaskItem extends React.Component {
     
     return (
       <div key={ id }
-           className="task-list-item"
+           className="task-list-item row"
            onMouseEnter={ this.showButtons.bind(this) }
            onMouseLeave={ this.hideButtons.bind(this) }>
-        <div className="row">
 
             { this.state.Buttons }
 
-            <h3 className="task-list-item-title">{ title }</h3>
+           <div className="row task-list-item-info">
+             <h3 className="task-list-item-title">{ title }</h3>
 
-            <MarkContainer id={ id } />
-
-        </div>
+             <MarkContainer id={ id } />
+           </div>
       </div>
     );
   }

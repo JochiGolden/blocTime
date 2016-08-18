@@ -66,54 +66,52 @@ class NewTaskItem extends React.Component {
     
     while ( i < this.state.subtaskFields ) {
       subtasks.push(
-        <div key={ `subtask-${i}` } className="row">
-          <input
-            type="text"
-            className="new-task-form-field-subtask col-md-10 "
-            value={ this.state.text[i] ? this.state.text[i] : "" }
-            placeholder="Write a sub task..."
-            onChange={ this.handleTextChange.bind(this, i) } />
-        </div>
+        <input
+          key={ `subtask-${i}` } 
+          type="text"
+          className="new-task-form-field-subtask row"
+          value={ this.state.text[i] ? this.state.text[i] : "" }
+          placeholder="Write a sub task..."
+          onChange={ this.handleTextChange.bind(this, i) } />
       );
       i += 1;
     }
     
     return (
       <div className="new-task-form row">
-        <div className="col-md-12">
-          <div className="row">
-           
-            <input
-              type="text"
-              className="new-task-form-field-title col-md-6 "
-              value={ this.state.title }
-              placeholder="Enter a title..."
-              onChange={ this.handleTitleChange.bind(this) } />
-          
-          </div>
+        <div className="col">
+          <input
+            type="text"
+            className="new-task-form-field-title row"
+            value={ this.state.title }
+            placeholder="Enter a title..."
+            onChange={ this.handleTitleChange.bind(this) } />
 
           { subtasks.map(subtask => { return subtask }) }
-
-        </div>
-        <div className="row">
-          <div className="col-md-5">
+          
+          <div className="row">
+            <span className="new-task-form-info">
+              Add/Remove Subtasks <span className="ion-chevron-right"></span>
+            </span>
             <button key={ 'plus' }
                     className="btn-tool"
                     onClick={ this.addAField.bind(this) }>
-              <span className="icon glyphicon glyphicon-plus-sign" />
+              <span className="ion-plus-circled"></span>
             </button>
             <button key={ 'minus' }
                     className="btn-tool"
                     onClick={ this.removeAField.bind(this) }>
-              <span className="icon glyphicon glyphicon-minus-sign" />
+              <span className="ion-minus-circled"></span>
             </button>
             <button key={ 'finish' }
                     className="btn-tool"
+                    style={{ width: '32%' }}
                     onClick={ this.finishTask.bind(this) }>
-              <span className="icon glyphicon glyphicon-thumbs-up" />
+              <span className="ion-thumbsup" style={{ marginRight: '5px'}}></span>
               Finish
             </button>
           </div>
+
         </div>
       </div>
     );

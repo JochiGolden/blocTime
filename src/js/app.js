@@ -13,25 +13,15 @@ import TaskList from './components/TaskList.jsx';
 class App extends Component {
   render() {
     return(
-      <div className="container main">
-        <div className="row">
-          <div className="col-md-10 col-md-offset-1">
-            <div className="row">
+      <div className="row row-center main">
+        <div className="col col-center" style={{ width: "600px" }}>
 
-                <Timer />
+          <Timer />
 
-            </div>
-            <div className="row">
+          <CurrentTaskContainer  />
 
-                <CurrentTaskContainer  />
+          <TaskList />
 
-            </div>
-            <div className="row">
-
-              <TaskList />
-
-            </div>
-          </div>
         </div>
       </div>
     )
