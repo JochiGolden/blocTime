@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startCount, setInitialTime  } from '../actions';
 
-const SelectBtn = ({ countingDown, startCount, setInitialTime, label }) => {
+const SelectBtn = ({ countingDown, currentTask, startCount, setInitialTime, label }) => {
 
   function handleClick(funcs) {
     funcs[0]();
@@ -11,7 +11,7 @@ const SelectBtn = ({ countingDown, startCount, setInitialTime, label }) => {
   
   return (
       <div className={ countingDown ? 'btn-select' : 'btn-select-stopped'}
-           onClick={ handleClick.bind(null, [setInitialTime, startCount]) }>
+           onClick={ currentTask ? handleClick.bind(null, [setInitialTime, startCount]) : "" }>
           { countingDown
               ? <p>Reset</p>
               : <p>
@@ -27,7 +27,8 @@ const SelectBtn = ({ countingDown, startCount, setInitialTime, label }) => {
 function mapStateToProps(state) {
   return {
     label : state.setTime.timerOptions[state.setTime.currentOption].label,
-    countingDown : state.setTime.countingDown
+    countingDown : state.setTime.countingDown,
+    currentTask: state.tasks.currentTask
   };
 }
 

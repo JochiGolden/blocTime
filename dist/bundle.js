@@ -35684,7 +35684,7 @@ var CurrentTaskContainer = function (_React$Component) {
           { className: 'row' },
           _react2.default.createElement(
             'div',
-            { className: 'col' },
+            { className: 'current-task col' },
             _react2.default.createElement(
               'h3',
               { className: 'heading' },
@@ -35695,7 +35695,8 @@ var CurrentTaskContainer = function (_React$Component) {
               { className: 'current-task-title' },
               title
             ),
-            _react2.default.createElement(_MarkContainer2.default, { id: this.props.id }),
+            _react2.default.createElement(_MarkContainer2.default, { classes: 'completion-mark-container completion-mark-container-current',
+              id: this.props.id }),
             _react2.default.createElement(
               'div',
               { className: 'current-subtasks col' },
@@ -35708,10 +35709,10 @@ var CurrentTaskContainer = function (_React$Component) {
       } else {
         return _react2.default.createElement(
           'div',
-          { className: 'current-task row' },
+          { className: 'row' },
           _react2.default.createElement(
             'div',
-            { className: 'col' },
+            { className: 'current-task col' },
             _react2.default.createElement(
               'h1',
               { className: 'current-task-title' },
@@ -35776,12 +35777,14 @@ var MarkContainer = function (_React$Component) {
   _createClass(MarkContainer, [{
     key: 'render',
     value: function render() {
-      var pomodoros = this.props.pomodoros;
+      var _props = this.props;
+      var pomodoros = _props.pomodoros;
+      var classes = _props.classes;
 
 
       return _react2.default.createElement(
         'div',
-        { className: 'completion-mark-container' },
+        { className: classes },
         _react2.default.createElement(
           _reactAddonsCssTransitionGroup2.default,
           {
@@ -35906,7 +35909,8 @@ var TaskItem = function (_React$Component) {
             { className: 'task-list-item-title' },
             title
           ),
-          _react2.default.createElement(_MarkContainer2.default, { id: id })
+          _react2.default.createElement(_MarkContainer2.default, { id: id,
+            classes: 'completion-mark-container completion-mark-container-list' })
         )
       );
     }
@@ -36434,11 +36438,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var defaultState = {
   "setTime": {
     "timerOptions": {
-      "pomodoro": { label: "Pomodoro", startTime: "2500" },
+      "pomodoro": { label: "Pomodoro", startTime: "0010" },
       "shortBreak": { label: "Short Break", startTime: "0500" },
       "longBreak": { label: "Long Break", startTime: "3000" }
     },
-    "currentTime": "2500",
+    "currentTime": "0010",
     "countingDown": false,
     "currentOption": "pomodoro",
     "onBreak": false,
@@ -36663,6 +36667,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var SelectBtn = function SelectBtn(_ref) {
   var countingDown = _ref.countingDown;
+  var currentTask = _ref.currentTask;
   var startCount = _ref.startCount;
   var setInitialTime = _ref.setInitialTime;
   var label = _ref.label;
@@ -36676,7 +36681,7 @@ var SelectBtn = function SelectBtn(_ref) {
   return _react2.default.createElement(
     'div',
     { className: countingDown ? 'btn-select' : 'btn-select-stopped',
-      onClick: handleClick.bind(null, [setInitialTime, startCount]) },
+      onClick: currentTask ? handleClick.bind(null, [setInitialTime, startCount]) : "" },
     countingDown ? _react2.default.createElement(
       'p',
       null,
@@ -36702,7 +36707,8 @@ var SelectBtn = function SelectBtn(_ref) {
 function mapStateToProps(state) {
   return {
     label: state.setTime.timerOptions[state.setTime.currentOption].label,
-    countingDown: state.setTime.countingDown
+    countingDown: state.setTime.countingDown,
+    currentTask: state.tasks.currentTask
   };
 }
 

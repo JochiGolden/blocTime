@@ -6,10 +6,10 @@ class MarkContainer extends React.Component {
 
   render() {
 
-    let { pomodoros } = this.props;
+    let { pomodoros, classes } = this.props;
     
     return (
-      <div className="completion-mark-container">
+      <div className={ classes }>
         <ReactCSSTransitionGroup
           transitionName="logPomodoro" 
           transitionEnterTimeout={500}

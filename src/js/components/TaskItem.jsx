@@ -50,7 +50,8 @@ export default class TaskItem extends React.Component {
            <div className="row task-list-item-info">
              <h3 className="task-list-item-title">{ title }</h3>
 
-             <MarkContainer id={ id } />
+             <MarkContainer id={ id }
+                            classes="completion-mark-container completion-mark-container-list" />
            </div>
       </div>
     );

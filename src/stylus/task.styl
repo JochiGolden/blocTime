@@ -1,12 +1,12 @@
 .current-task
   &-title
-    display inline-block
+    text-align center
     margin 0
     margin-top 5px
-    padding-left 10px
     color _color2
     font-size 2.5em
     background-color _color1
+    border-bottom 2px solid _color2
 
 .current-subtasks
   background-color _color2
@@ -49,11 +49,13 @@
     
     &-info
       position relative
+      align-items center
       left 20px
+      width 70%
 
     &-title
       margin 0
-      padding 0
+      padding 0 2px
       color _color2
 
       text-align left
@@ -88,16 +90,14 @@
   div .new-task-form-field-title
     border-bottom 1px solid #ccc
 
-.completion-mark
-  position relative
-  float none
-  min-width 21px
-  font-size 1.5em
-
 .completion-mark-container
-    float left
-    padding-left 5%
-    min-width 20%
-    max-height 78px
-
-    color _color1
+    color _color2
+    padding-left 30px
+    
+    &-current
+      height 26px
+      padding 3px 30px
+      font-size 1.5rem
+      background-color _color1
+    &-list
+      font-size 1rem

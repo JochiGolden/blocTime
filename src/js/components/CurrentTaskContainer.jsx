@@ -13,11 +13,12 @@ class CurrentTaskContainer extends React.Component {
       
       return (
         <div className="row">
-          <div className="col">
+          <div className="current-task col">
             <h3 className="heading">Current Task</h3>
 
             <h1 className="current-task-title">{ title }</h1>
-            <MarkContainer id={ this.props.id } />
+            <MarkContainer classes="completion-mark-container completion-mark-container-current"
+                         id={ this.props.id } />
 
             <div className="current-subtasks col">
               { subtasks.map((subtext, index) => {
@@ -29,8 +30,8 @@ class CurrentTaskContainer extends React.Component {
       );
     } else {
       return (
-        <div className="current-task row">
-          <div className="col">
+        <div className="row">
+          <div className="current-task col">
             <h1 className="current-task-title">&lt;Add A Task&gt;</h1>
           </div>
         </div>
